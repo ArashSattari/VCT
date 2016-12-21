@@ -1,0 +1,1 @@
+,{"url":"img/p9.jpg","px":-59.583,"pz":-32.298,"ix":-59.583,"iy":19.7,"iz":-32.298,"iry":-6.88,"iw":51.509,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Krikkokatu 13 / Pakkahuoneenkatu. Wooden house of savings bank Sampo in 1951."}

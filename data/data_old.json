@@ -1,0 +1,50 @@
+{
+	"d": [
+		{
+			"url": "img/yy.png",
+			"px":  -92.672,
+			"pz":  107.896,
+			"ix":  -90,
+			"iy":  21.3,
+			"iz":  60,
+			"iry": 0.3,
+			"iw":  48.8,
+			"ih":  32.25,
+			"cx":  -92.683,
+			"cz":  109.397,
+			"crx": 0.304,
+			"cry": -0.055,
+			"desc":"Kirkkokatu / Pakkahuoneenkatu. The old office building of Kansallis-Osake-Pankki which deconstructed in 1959."
+		}
+		,{"url":"img/p2.jpg","px":-67.089,"pz":62.739,"ix":-26.2,"iy":22.9,"iz":93.8,"iry":-1.88,"iw":20,"ih":26.9,"cx":-68.405,"cz":61.674,"crx":0.256,"cry":-2.30482, "desc":"Pakkahuoneenkatu 14. Hotel Arina."}
+		,{"url":"img/p3.jpg","px":63.448,"pz":12.6,"ix":136.59,"iy":31.5,"iz":20.574,"iry":-1.54,"iw":70.532,"ih":49.665,"cx":61.769,"cz":12.498,"crx":0.28,"cry":-1.60882, "desc":"Hallituskatu 13-15. 'Valkealinna' in 1950s."}
+		,{"url":"img/p4.png","px":-32.881,"pz":-137.368,"ix":62.9,"iy":19.7,"iz":-154.74,"iry":-1.54,"iw":70.532,"ih":49.665,"cx":-34.378,"cz":-137.144,"crx":0.256,"cry":-1.47282, "desc":"Kirkkokatu 9. The Insurance House 'Vakuutustalo' from the front of Town Hall at the beginning of the 1960s."}
+		,{"url":"img/p5.jpg","px":-35.706,"pz":-61.236,"ix":-42.269,"iy":16.7,"iz":-28.889,"iry":-3.16,"iw":32.049,"ih":21.198,"cx":-35.387,"cz":-62.834,"crx":0.16,"cry":2.944, "desc":"Kirkkokatu 11-13. Old office building of Kaleva newspaper."}
+		,{"url":"img/p6.jpg","px":-191.826,"pz":186.885,"ix":-187.957,"iy":14.7,"iz":184.7,"iry":-1.28,"iw":7.154,"ih":5.721,"cx":-193.001,"cz":187.693,"crx":0.168,"cry":-0.968, "desc":"Kirkkokatu. View from Kauppurienkatu to the tower of Oulu Cathedral in 1937."}
+		,{"url":"img/p7.jpg","px":-103.638,"pz":120.309,"ix":-95.992,"iy":20.1,"iz":84.608,"iry":-6.32,"iw":32.854,"ih":20.992,"cx":-103.929,"cz":121.74,"crx":0.184,"cry":-0.2, "desc":"Kikkokatu / Pakkahuoneenkatu. The old office building of Kansallis-Osake-Pankki in 1959."}
+		,{"url":"img/p8.jpg","px":-5.679,"pz":-102.685,"ix":36.923,"iy":16.5,"iz":-137.312,"iry":-7.32,"iw":16.417,"ih":23.1,"cx":-6.858,"cz":-101.741,"crx":0.056,"cry":-0.896, "desc":"Town Hall's yard. The 350th anniversary of City of Oulu. Peace declaration during the celebration in May of 1955."}
+		,{"url":"img/p9.jpg","px":-64.522,"pz":-13.803,"ix":-63,"iy":17.7,"iz":30.135,"iry":-2.2,"iw":51.509,"ih":35,"cx":-64.883,"cz":-15.221,"crx":0.256,"cry":-2.892, "desc":"Krikkokatu 13 / Pakkahuoneenkatu. Wooden house of savings bank Sampo in 1951."}
+		,{"url":"img/p10.jpg","px":128.78,"pz":56.931,"ix":131.441,"iy":21.5,"iz":19.126,"iry":-6.84,"iw":55.311,"ih":35,"cx":128.475,"cz":58.295,"crx":0.28,"cry":-0.22, "desc":"Hallituskatu 11. 'Kassatalo' (left) and 'Valkealinna'. 'Kassatalo' is the old building of the Regional Credit Union of Oulu (Oulun seudun osuuskassa) which moved there in 1955."}
+		,{"url":"img/p11.jpg","px":99.407,"pz":27.972,"ix":86.723,"iy":23.5,"iz":-52.442,"iry":-0.28,"iw":99.681,"ih":72.1,"cx":99.39,"cz":29.294,"crx":0.26,"cry":-0.013, "desc":"Hallituskatu 16. Kassatalo. Old building of the Regional Credit Union of Oulu (Oulun seudun osuuskassa) which moved there in 1955."}
+		,{"url":"img/p12.jpg","px":3.157,"pz":215.635,"ix":-8.848,"iy":13.5,"iz":207.414,"iry":-5.32,"iw":21.954,"ih":16.1,"cx":4.457,"cz":216.522,"crx":0.048,"cry":0.972, "desc":"Isokatu 22. Department store City in 1968."}
+		,{"url":"img/p13.jpg","px":56.997,"pz":157.903,"ix":36.617,"iy":24.3,"iz":134.02,"iry":-5.58,"iw":30.054,"ih":32.148,"cx":58.068,"cz":158.985,"crx":0.288,"cry":0.78, "desc":"Pakkahuoneenkatu 15 / Isokatu 16. 'Puistola' in the 1950s."}
+		,{"url":"img/p14.jpg","px":-146.779,"pz":98.066,"ix":-136.488,"iy":14.9,"iz":133.906,"iry":-8.88,"iw":23.262,"ih":16.8,"cx":-147.293,"cz":96.09,"crx":0.128,"cry":3.396, "desc":"Kirkkokatu 17. Bookshop 'Pohjalainen'."}
+		,{"url":"img/p15.jpg","px":-10.431,"pz":-73.318,"ix":-50.678,"iy":15.3,"iz":-35.957,"iry":-11.14,"iw":49.575,"ih":35.7,"cx":-9.354,"cz":-74.177,"crx":0.176,"cry":2.244, "desc":"Kirkkokatu 6. Construction of the new bank house designed by Aarne Ervi."}
+		,{"url":"img/p16.jpg","px":-99.037,"pz":128.759,"ix":-98.628,"iy":18.5,"iz":83.403,"iry":-6.4,"iw":42.325,"ih":30.8,"cx":-102.124,"cz":127.983,"crx":0.184,"cry":-0.172, "desc":"Kirkkokatu. 'Sokos-aukio' in 1963."}
+		,{"url":"img/p17.jpg","px":1.657,"pz":-82.413,"ix":-14.54,"iy":14.3,"iz":-67.178,"iry":-10.3,"iw":39.762,"ih":40.6,"cx":2.882,"cz":-83.17,"crx":0.208,"cry":2.124, "desc":"Kirkkokatu. View from Kaupunginoja to Pakkahuoneenkatu 19.8.1976."}
+		
+		,{"url":"img/p18.jpg","px":-102.79,"pz":-181.768,"ix":-52.209,"iy":16.1,"iz":-156.352,"iry":-8.32,"iw":33.43,"ih":25.2,"cx":-104.163,"cz":-182.43,"crx":0.064,"cry":-2.02, "desc":"Kirkkokatu. Town Hall's yard at the beginning of the 60s."}
+		,{"url":"img/p19.jpg","px":-89.112,"pz":25.534,"ix":-89.112,"iy":19.7,"iz":25.534,"iry":-6.88,"iw":25.31,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"New Year's Eve at the 'Sokos-aukio'."}
+		,{"url":"img/p20.jpg","px":-86.959,"pz":24.676,"ix":-86.959,"iy":19.7,"iz":24.676,"iry":-6.88,"iw":50.387,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"View from the front of Kirkkokatu 6 to Hallituskatu in 1963."}
+		,{"url":"img/p21.jpg","px":87.760,"pz":125.189,"ix":87.760,"iy":19.7,"iz":125.189,"iry":-6.88,"iw":25.322,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Isokatu 18. Hotel Arina in winter in the 1950s."}
+		,{"url":"img/p22.jpg","px":78.037,"pz":148.197,"ix":78.037,"iy":19.7,"iz":148.197,"iry":-6.88,"iw":25.225,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Isokatu 18. Hotel Arina in winter in the 1950s."}
+		,{"url":"img/p23.jpg","px":-101.041,"pz":54.286,"ix":-101.041,"iy":19.7,"iz":54.286,"iry":-6.88,"iw":57.615,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Kirkkokatu 8. The house of Säästöpankki. Windows covered during the Continuation War in 1942."}
+		,{"url":"img/p24.jpg","px":-153.333,"pz":161.06,"ix":-153.333,"iy":19.7,"iz":161.06,"iry":-6.88,"iw":55.488,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Kirkkokatu 8-10. The house of Säästöpankki. Windows covered during the Continuation War in 1942."}
+		,{"url":"img/p25.jpg","px":-166.639,"pz":209.576,"ix":-166.639,"iy":19.7,"iz":209.576,"iry":-6.88,"iw":23.073,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Kirkkokatu 10 / Kauppurienkatu 11 in 1942."}
+		,{"url":"img/p26.jpg","px":-163.358,"pz":144.503,"ix":-163.358,"iy":19.7,"iz":144.503,"iry":-6.88,"iw":50.909,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Kirkkokatu 17. The ruins of 'Pohjalainen' after bombing during the Continuation War in 1942."}
+		,{"url":"img/p27.jpg","px":-96.788,"pz":35.545,"ix":-96.788,"iy":19.7,"iz":35.545,"iry":-6.88,"iw":47.38,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Kirkkokatu 15. Arina-Sokos department store."}
+		,{"url":"img/p28.jpg","px":-3.7,"pz":-94.56,"ix":-3.7,"iy":19.7,"iz":-94.56,"iry":-6.88,"iw":47.903,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Kirkkokatu. Christmas lights in the 1960s."}
+		,{"url":"img/p29.jpg","px":34.149,"pz":-115.489,"ix":34.149,"iy":19.7,"iz":-115.489,"iry":-6.88,"iw":48.243,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Kirkkokatu. Military parade in 1958. Old bank house of Kansallis-Osake-Pankki in the background."}
+		,{"url":"img/p30.jpg","px":-34.846,"pz":-64.575,"ix":-34.846,"iy":19.7,"iz":-64.575,"iry":-6.88,"iw":48.374,"ih":35,"cx":-20.402,"cz":-78.744,"crx":0.024,"cry":-0.588, "desc":"Kirkkokatu. Military parade in 1958."}
+	]
+}

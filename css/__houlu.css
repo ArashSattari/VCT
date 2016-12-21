@@ -1,0 +1,266 @@
+body
+{
+	background: #222;
+	
+}
+#loading 
+{
+	position: absolute;
+    z-index: 50;
+	margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	width: 700px;
+    height: 60px;
+	color: white;
+	font: normal 20px tahoma;
+	text-align: center;
+	pointer-events:none;
+}
+
+#loading img
+{
+	vertical-align: middle;
+}
+
+#minimap
+{
+	z-index:77;
+	position:absolute;
+	width: 330px;
+	height: 330px;
+	bottom:50px;
+	left:-350px;
+	background: url("../img/minimap_frame.png");
+	pointer-events:none;
+}
+
+#minimap canvas
+{
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+#pressSpace 
+{
+	position: absolute;
+    z-index: 99;
+	margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 700px;
+    height: 60px;
+	color: white;
+	font: bold 40px tahoma;
+	text-align: center;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 4px 4px #000000;
+	display: none;
+	pointer-events:none;
+}
+
+#pressStart
+{
+	position: absolute;
+    z-index: 8;
+    bottom: 150px;
+    height: 60px;
+	right: 0;
+    left: 0;
+	color: white;
+	font: bold 30px tahoma;
+	text-align: center;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 2px 2px #000000;
+	pointer-events:none;
+	display: none;
+	/*border: 1px solid red;*/
+}
+
+#title
+{
+	position: absolute;
+	color: #ff9900;
+	font: bold 100px tahoma;
+	text-align: center;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 4px 4px #000000;
+	z-index: 9;
+	pointer-events:none;
+    top: 150px;
+    right: 0;
+    left: 0;
+    height: 100px;
+	display: none;
+	/*border: 1px solid red;*/
+}
+
+#portalPanel
+{
+	position: absolute;
+	color: black;
+	background: rgba(255, 255, 255, .6);
+	font: normal 30px tahoma;
+	z-index: 9;
+	pointer-events:none;
+    bottom: 60px;
+    right: -700px; /* -70px=panel visible, -680=panel invisible */
+	width: 570px;
+	padding: 0 70px 0 20px;
+	border-radius: 25px 0px 0px 25px;
+	border: 20px solid rgba(0, 0, 0, .2);
+	background-clip: padding-box;
+}
+
+#portalPanel .title
+{
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#hud
+{
+	position: absolute;
+	z-index: 9;
+	width: 250px;
+    height: 150px;
+	right: 0px;
+    top: -300px;
+}
+
+#hud .help 
+{
+	margin-top: 10px;
+	margin-right: 10px;
+    position: inherit;
+    right: 0;
+    width: 50px;
+    height: 50px;
+	cursor: pointer;
+}
+
+#hud .score_panel
+{
+	margin-top: -50px;
+	background: #333;
+	width: 118px;
+	height: 37px;
+	padding:50px 10px 10px 10px;
+	border-radius: 0 0 10px 10px;
+	border: 0, 0, 10px 10px;
+	border-color: rgba(0, 0, 0, .2);
+	border-style: solid;
+	background: rgba(255, 255, 255, .6);
+}
+
+#hud .score 
+{
+    font: normal 30px tahoma;
+    position: inherit;
+    text-align:right;
+    top: 0;
+    right: 50%;
+}
+
+#hud .portal_ico
+{
+    width: 30px;
+    height: 30px;
+	vertical-align: text-bottom;
+}
+
+#helpDialog
+{
+	position: absolute;
+    background: rgba(255, 255, 255, 0.75);
+	font: normal 20px tahoma;
+	z-index: 100;
+    left: 0;
+    right: 0;  
+    bottom: 400px;
+    margin: auto;
+	width: 600px;
+    height: 350px;
+    top: -850px;
+    top: -1000px;
+    padding: 0 70px 0 20px;
+	border-radius: 25px 25px 25px 25px;
+	border: 20px solid rgba(0, 0, 0, .2);
+	background-clip: padding-box;
+	/*padding-left: 20px;
+	border-radius: 15px 0px 0px 15px;*/
+    vertical-align:bottom;
+}
+
+#helpDialog table td {
+	
+	text-align: center;
+	padding: 15px;
+}
+
+
+#arrows.arrow_text 
+{
+display:inline-block;
+}
+
+#inst{
+    vertical-align: text-bottom;
+    right: 200px;
+    left:   200px;
+    width: 200px;
+    top: -200px;
+    height: 200px;
+    text-align:left;  
+}
+
+#close{
+    position: inherit;
+    top: -35px;
+    left: 650px;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+}
+
+#congratulations{
+    position: absolute;
+    background: rgba(255, 255, 255, 0.75);
+	font: normal 20px tahoma;
+	z-index: 9;
+    left: 0;
+    right: 0;  
+    top: -600px;
+    bottom: 700px;
+    padding: 0 70px 0 20px;
+	border-radius: 25px 25px 25px 25px;
+	border: 20px solid rgba(0, 0, 0, .2);
+	background-clip: padding-box;
+    margin-bottom: 100px;
+    margin: auto;
+	width: 600px;
+    height: 250px;
+}
+
+#congratulations table td {
+	
+	text-align: center;
+	padding: 15px;
+}
+
+#cong_close {
+    position: inherit;
+    top: -35px;
+    left: 650px;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+}

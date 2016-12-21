@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>OuluThreeJS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel=stylesheet href="css/base.css"/>
+</head>
+<body onload="init()">
+<script type='text/javascript' src='DAT.GUI.min.js'>
+    
+    </script>
+	<script src="js/gsap/easing/EasePack.min.js"></script>
+	<script src="js/gsap/TweenMax.min.js"></script>
+	<script src="js/houlu/Loader.js"></script>
+	<script src="js/houlu/EditControls.js"></script>
+	<script src="js/houlu/PortalManager.js"></script>
+	<script src="js/houlu/Minimap.js"></script>
+	<script src="js/houlu/HOulu.js"></script>
+	<script src="js/Three.js"></script>
+	<script src="js/Detector.js"></script>
+	<script src="js/Stats.js"></script>
+	<script src="js/FreeLook.js"></script>
+	<script src="js/FirstPersonControls.js"></script>
+	<script src="js/THREEx.KeyboardState.js"></script>
+	<script src="js/THREEx.FullScreen.js"></script>
+	<script src="js/THREEx.WindowResize.js"></script>
+	<script src="Car.js"></script>
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<link rel=stylesheet href="css/jquery-ui.css" />
+	<link rel=stylesheet href="css/info.css"/>
+	<link rel=stylesheet href="css/houlu.css"/>
+	<script src="gui/UiElements.js"></script>
+	<div id="intro_UI"></div>
+    <div id="info_UI"></div>
+	
+    <div id="hud">
+        <img class="help" src="img/help_2.png" />
+		<div class="score_panel">
+			<span class="score"> 00/20 </span>
+			<img class="portal_ico" src="img/portal_visited.png" />  
+		</div>
+    </div>
+
+		<div id="helpDialog">
+           <table>
+			   <tr>
+				   <td><img src="img/arrowKeys.png" /></td>
+				   <td><img src="img/mouse.png"/ ></td>
+				   <td><img src="img/portal_help.png"></td>
+			   </tr>
+			   <tr>
+				   <td>Move</td>
+				   <td>Click and drag to look around</td>
+				   <td>Go near portals to interact with them</td>
+			   </tr>
+		   </table>
+            <img id =close src="img/close.png"></img>
+		</div>
+        
+   <div id="congratulations">
+       <table>
+			   <tr>
+				   <td>Congratulations for visiting all the portals</td>
+				   
+			   </tr>
+			   <tr>
+				   <td>Close</td>
+				   <td>Retry</td> 
+			   </tr>
+           		<tr>
+				   <td><img id =retry src="img/retry.PNG"/></td>
+				   <td><img id =cong_close src="img/close.png"/></td> 
+			   </tr>
+		   </table>
+    </div>
+	
+	<div id="portalPanel">
+		<p class="description">description</p>
+	</div>
+	
+	<div id="minimap">
+		<canvas width="300" height="300">
+			<p>your browser doesnt support canvas!!</p>
+		</canvas>
+	</div>
+	
+	<div id="loading"><img width="25" height="25" src='img/loading.gif' /> loading Historical Oulu...</div>
+	<div id="title">Historical Oulu</div>
+	<div id="pressStart">Press [SPACE] to start</div>
+	<div id="pressSpace">Press [SPACE] to enter the portal</div>
+	<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+	<script src="Oulu.js"></script>
+
+	
+	
+</body>
+</html>
