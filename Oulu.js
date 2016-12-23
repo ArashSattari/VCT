@@ -115,7 +115,7 @@ function init()
 	Loader.init();
 	Loader.completeFunc = function()
 	{
-		HOulu.init(scene, flyCamera);
+		CST.init(scene, flyCamera);
 	}
 	
 	var jsonLoader = new THREE.JSONLoader();
@@ -255,7 +255,7 @@ function update() {
 	var delta = clock.getDelta(); // seconds.
 
 	flyControls.update(delta * 1000);
-	HOulu.update();
+	//HOulu.update();
 	//stats.update();
 }
 
