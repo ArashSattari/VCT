@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve api
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu
+Environment="PATH=/usr/local/bin"
+ExecStart=/usr/local/bin/uwsgi --python-path /vagrant/cst/api --wsgi-file /vagrant/cst/api/wsgi.py --callable app --ini /vagrant/cst/api/api.ini
+
+[Install]
+WantedBy=multi-user.target
