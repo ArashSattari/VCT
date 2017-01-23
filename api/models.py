@@ -5,19 +5,20 @@
 # don't need to declare a new one).
 from config import db
 
+__VARCHAR_LEN__ = 250
 
 class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    company_name = db.Column(db.Unicode)
+    company_name = db.Column(db.Unicode(__VARCHAR_LEN__))
 
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.Unicode)
-    password = db.Column(db.Unicode)
-    first_name = db.Column(db.Unicode)
-    last_name = db.Column(db.Unicode)
-    email = db.Column(db.Unicode)
+    user_name = db.Column(db.Unicode(__VARCHAR_LEN__))
+    password = db.Column(db.Unicode(__VARCHAR_LEN__))
+    first_name = db.Column(db.Unicode(__VARCHAR_LEN__))
+    last_name = db.Column(db.Unicode(__VARCHAR_LEN__))
+    email = db.Column(db.Unicode(__VARCHAR_LEN__))
     company_id = db.Column(db.ForeignKey('company.id'))
     company = db.relationship(Company, backref=db.backref('users', lazy='dynamic'))
 
@@ -36,8 +37,8 @@ class Sign(db.Model):
     cz = db.Column(db.Float)
     crx = db.Column(db.Float)
     cry = db.Column(db.Float)
-    img_url = db.Column(db.Unicode)
-    reports = db.Column(db.Unicode)
+    img_url = db.Column(db.Unicode(__VARCHAR_LEN__))
+    reports = db.Column(db.Unicode(__VARCHAR_LEN__))
     owner_id = db.Column(db.ForeignKey('user.id'))
     owner = db.relationship(User, backref=db.backref('signs', lazy='dynamic'))
     company_id = db.Column(db.ForeignKey('company.id'))
