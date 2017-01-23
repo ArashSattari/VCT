@@ -21,9 +21,8 @@ CST.init = function(scen, cam)
 
 CST._createBanners = function() {
 //TODO: this is only for one banner, make it for multiple
-    // Sync loading of banners with appropriate buildings?
     // load the data and use it to display the banners using the code below
-    //TODO: create data: data.width, data.height, data.ix, data.iy, data.iz, data.irx, data.iry, data.irz
+    //TODO: create data
     //TODO: get image URLs
     var renderer = new THREE.WebGLRenderer();
     var texture = THREE.ImageUtils.loadTexture("/js/cst/kissa.jpg"); //imgURL
