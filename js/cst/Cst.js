@@ -12,22 +12,71 @@ CST.init = function(scen, cam)
 
     // entry point
     this._createBanners();
+    this.fetchData();
 
     //TODO: implement banners navigation
 
     // TODO: implement banner change url
 
 };
+CST.fetchData = function() {
+    //Fetches the sign data
+
+    $.getJSON("api/v1.0/sign", function(data) {
+        var data_values;
+
+        // data_values contains all the relevant data under /api/v1.0/'sign'
+        data_values = data.objects[0];
+        // Uncomment next line to see the it nicely in console:
+        console.log(JSON.stringify(data_values));
+
+        // company_Data contains all the data of the company.
+        company_data = data_values.company;
+        // Uncomment next line to see the it nicely in console:
+        console.log(JSON.stringify(company_data));
+        });
+
+
+        };
+
 
 CST._createBanners = function() {
+    var banners;
 //TODO: this is only for one banner, make it for multiple
     // load the data and use it to display the banners using the code below
     //TODO: create data
     //TODO: get image URLs
-    var renderer = new THREE.WebGLRenderer();
-    var texture = THREE.ImageUtils.loadTexture("/js/cst/kissa.jpg"); //imgURL
+
+
+    // Fetching multiple banner.
+
+    // Goes through the whole database and fetches all of the banner ID's. Returns a ?list? with all of the banner ID's?.
+    // How is the loading area per time handled?
+        //This is for HTML table
+        // data_rows = data.getElementById(tableId).getElementsByTagName("tr").length;
+    /*
+        for (i=0; i < data_rows; i++) {
+            // List containing all of the banners data: width, heigth etc.
+            // This line separates data_rows
+            banners = data[i] // Or push?
+            for (j=0; j < r
+            banners = data_rows[i];
+
+
+        }
+    */
+
+
+
+
+    //for (i = 0; i < "database length here: data.length"; i++)
+
+
+
+    // Creates a single banner.
+    var texture = THREE.ImageUtils.loadTexture("/data/banners/kissa.jpg"); //imgURL
     //texture.needsUpdate = true; // call this after you change the texture url
-    var data = {
+    var test_data = {
         'width':5,
         'heigth':5,
         'ix':-73.46322679386216,
@@ -48,16 +97,15 @@ CST._createBanners = function() {
 
 
     var material = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide}); //Remove DoubleSide to make banner one sided only.
-    var geometry = new THREE.PlaneGeometry(data['width'], data['heigth']);
+    var geometry = new THREE.PlaneGeometry(test_data['width'], test_data['heigth']);
     var banner = new THREE.Mesh(geometry, material);
 
 
-    banner.position.x = data['ix']; //|| 0;
-    banner.position.y = data['iy']; //|| 0;
-    banner.position.z = data['iz']; //|| 0;
-    banner.rotation.x = data['irx']; //|| 0;
-    banner.rotation.y = data['iry']; //|| 0;
-    banner.rotation.z = data['irz']; //|| 0;
+    banner.position.x = test_data['ix']; //|| 0;
+    banner.position.y = test_data['iy']; //|| 0;
+    banner.position.z = test_data['iz']; //|| 0;
+    banner.rotation.x = test_data['irx']; //|| 0;
+    banner.rotation.y = test_data['iry']; //|| 0;
+    banner.rotation.z = test_data['irz']; //|| 0;
     this._scene.add(banner);
-    renderer.render(_scene, _camera);
 };
