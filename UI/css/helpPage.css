@@ -1,0 +1,83 @@
+html {
+    background-color: #000000;
+}
+
+.help {
+    border: 4px solid #888888;
+    border-radius: 30px;
+    height: 450px;
+    width: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+}
+.help .header {
+    border: 4px solid #888888;
+    background-color: #222222;
+    border-radius: 30px;
+    height: 40px;
+    width: 720px;
+    margin-top: -4px;
+    margin-left: -14px;
+}
+.help .header .text {
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-left: 185px;
+}
+.help .body {
+    height: 290px;
+    margin-top: 40px;
+}
+.help .body .image {
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+.help .body .text {
+    font-size: 20px;
+    color: #222222;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+.help .footer .divider {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
+.help .footer .stepsBar {
+    width: 100px;
+    margin-left: 30px; 
+}
+.help .footer .previousStep {
+    border: 2px solid #BBBBBB;
+    color: #AAAAAA;
+    background-color: #FFFFFF;
+    border-radius: 7px;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    margin-left: 320px;
+    outline: 0;
+}
+.help .footer .nextStep {
+    border: 2px solid #AAAAAA;
+    color: #FFFFFF;
+    background-color: #222222;
+    border-radius: 7px;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    margin-left: 10px;
+    outline: 0;
+}

@@ -5,6 +5,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<link rel=stylesheet href="css/base.css"/>
+	<!-- UI -->
+	<link rel="stylesheet" href="UI/css/helpPage.css">
+	<link rel="stylesheet" href="UI/css/menus.css">
+	<link rel="stylesheet" href="UI/jqwidgets/styles/jqx.base.css" type="text/css" />
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+	<script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="UI/jqwidgets/jqxcore.js"></script>
+	<script type="text/javascript" src="UI/jqwidgets/jqxbuttons.js"></script>
+	<script type="text/javascript" src="UI/jqwidgets/jqxscrollbar.js"></script>
+	<script type="text/javascript" src="UI/jqwidgets/jqxdata.js"></script>
+	<script type="text/javascript" src="UI/jqwidgets/jqxlistbox.js"></script>
+	<script type="text/javascript" src="UI/jqwidgets/jqxcombobox.js"></script>
+
 </head>
 <body onload="init()">
 <script type='text/javascript' src='js/DAT.GUI.min.js'>
@@ -41,61 +54,85 @@
 	<script src="gui/UiElements.js"></script>
 	<div id="intro_UI"></div>
     <div id="info_UI"></div>
-<!--
-    <div id="hud">
-        <img class="help" src="img/help_2.png" />
-		<div class="score_panel">
-			<span class="score"> 00/20 </span>
-			<img class="portal_ico" src="img/portal_visited.png" />  
-		</div>
-    </div>
 
-		<div id="helpDialog">
-           <table>
-			   <tr>
-				   <td><img src="img/arrowKeys.png" /></td>
-				   <td><img src="img/mouse.png"/ ></td>
-				   <td><img src="img/portal_help.png"></td>
-			   </tr>
-			   <tr>
-				   <td>Move</td>
-				   <td>Drag to look around</td>
-				   <td>Go next portals to interact with them</td>
-			   </tr>
-		   </table>
-            <img id =close src="img/close.png"></img>
-		</div>
-        
-   <div id="congratulations">
-       <table>
-			   <tr>
-				   <td> <b>Congratulations </b></td>
-				   
-			   </tr>
-			   <tr>
-				   <td>You visited all the portals and saw all the historical images</td>
-			   </tr>
-		   </table>
-       <img id =cong_close src="img/close.png"/>
-    </div>
-	
-	<div id="portalPanel">
-		<p class="description">description</p>
-	</div>
-	
-	<div id="minimap">
-		<canvas width="300" height="300">
-			<p>your browser doesnt support canvas!!</p>
-		</canvas>
-	</div>
-	
-	<div id="loading"><img width="25" height="25" src='img/loading.gif' /> loading Historical Oulu...</div>
-	<div id="title">Historical Oulu</div>
-	<div id="pressStart">Press [SPACE] to start</div>
-	<div id="pressSpace">Press [SPACE] to enter the portal</div>
--->
+
 	<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
 	<script src="Oulu.js"></script>
+
+
+	<!-- A help (Getting started) window will be shown when Virtual Oulu opens -->
+        <section id="helpPage">
+            <div class="help">
+                <div class="header">
+                    <span class="text">Welcome to Vitual Oulu</span>
+                </div>
+                <div class="body">
+                    <img class="image" src="UI/img/arrowKeys.png" alt="Help steps">
+                    <p class="text">Use keyboard arrow keys to navigate.</p>
+                </div>
+                <div class="footer">
+                    <hr class="divider"/>
+                    <img class="stepsBar" src="UI/img/helpSteps_1.png" alt="Help steps">
+                    <button class="previousStep">PREVIOUS</button>
+                    <button class="nextStep">NEXT</button>
+                </div>
+            </div>
+        </section>
+
+    <!-- Menus (and their icons) on the right edge -->
+        <!-- Help -->
+        <section id=helpMenu>
+            <div class=header>
+                <img class=headerIcon src="UI/img/help_icon_grey.png" alt=icon>
+            </div>
+        </section>
+        <!-- Sign In -->
+        <section id=signInMenu>
+            <div class="body">
+                <img class="logo" src="UI/img/oulu_logo.png" />
+                <input class="userNameInput" type="text" name="userName" placeholder="username" required="required" />
+                <input class="passwordInput" type="password" name="password" placeholder="Password" required="required" />
+                <button>SIGN IN</button>
+            </div>
+            <div class=header>
+                <img class=headerIcon src="UI/img/sign_in_icon_grey.png" alt=icon>
+                <span class="text">SIGN IN</span>
+            </div>
+        </section>
+        <!-- Update -->
+        <section id=updateMenu>
+            <div class="body">
+                <!-- Selecting Shop -->
+                <div class="selectShop">
+                    <div id="shopsComboBox"></div>
+                    <img class=icon src="UI/img/store.png" alt="store" />
+                </div>
+                <p id="selectShopFieldTitle">Select your shop</p>
+                <!-- Selecting Sign -->
+                <div class="selectSign">
+                    <img class="backwardArrow" src="UI/img/BackwardArrow_grey.png" alt="store" />
+                    <img class="signIcon" src="UI/img/sign.png" alt="store" />
+                    <img class="forwardArrow" src="UI/img/ForwardArrow_grey.png" alt="store" />
+                </div>
+                <p id="selectSignFieldTitle">Select a sign</p>
+                <!-- Selecting New Sign -->
+                <div class="selectNewSign">
+                    <label for="browse"><img class="add" src="UI/img/add_grey.png" /></label>
+                    <input id="browse" type="file" />
+                </div>
+                <p id="selectNewSignFieldTitle">Add the new sign</p>
+                <button>UPDATE SIGN</button>
+            </div>
+            <div class="header">
+                <img class=headerIcon src="UI/img/update_icon_grey.png" alt=icon>
+                <span class="text">UPDATE SIGN</span>
+            </div>
+        </section>
+        <img id="logo" src="UI/img/app_logo.png" alt="store" />
+
+        <script type="text/javascript" src="UI/js/menus.js"></script>
+        <script type="text/javascript" src="UI/js/helpPage.js"></script>
+
 
 	
 	
