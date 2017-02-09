@@ -1,12 +1,11 @@
-html {
+
+#UI {
     width: 100%;
     height: 100%;
+    position: relative;
+    z-index: 200;
 }
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+
 #helpMenu .header {
     height: 40px;
     width: 80px;
