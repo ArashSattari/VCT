@@ -18,7 +18,10 @@ var selectedShop;
 
 $("#updateMenu").hide();
 $("#helpPage").hide();
-$("#updateMenu .selectNewSign input").hide();
+$("#updateMenu .body .selectNewSign input").hide();
+//hide select shop section
+$("#updateMenu .selectShop").hide();
+$("#selectShopFieldTitle").hide();
 
 // close help page
 function closeHelpPage() {
@@ -97,6 +100,7 @@ function userPassValidityCheck(){
     //-----userName and pass have to send to the server
     //-----server send back "valid" or "invalid"
     if ((userName=="Arash") && (pass=="2443377")){
+        update.menuHeader = "close";
         return "valid";
     }
     else{
@@ -226,10 +230,10 @@ function updateClickHandler() {
         openUpdateHeader();
         openUpdateBody();
     }
-    else{
+    else {
         closeUpdateHeader();
         closeUpdateBody();
-    }   
+    }
 } 
 
 //click handler for sign selector button (forward/backward)
