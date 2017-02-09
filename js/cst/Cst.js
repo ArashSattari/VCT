@@ -24,7 +24,7 @@ CST.fetchData = function() {
 
     $.getJSON("api/v1.0/sign", function(data) {
         var data_values;
-
+        console.log(data);
         // data_values contains all the relevant data under /api/v1.0/'sign'
         data_values = data.objects[0];
         // Uncomment next line to see the it nicely in console:
