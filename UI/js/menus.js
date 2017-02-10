@@ -13,6 +13,7 @@ var update = {
 };
 var userName ="" ;
 var pass = "" ;
+var validPass = "";
 var userShopsList;
 var selectedShop;
 
@@ -93,11 +94,15 @@ function signInClickHandler() {
     }   
 } 
 
-//checking user name an password validity (NOT COMPLETED)
+// get user's data and checking user name an password validity (NOT COMPLETED)
 function userPassValidityCheck(){
     userName = $("#signInMenu .body .userNameInput").val();
     pass =$("#signInMenu .body .passwordInput").val();
     //-----userName and pass have to send to the server
+    $.getJSON("api/v1.0/user", function(data){
+
+    });
+
     //-----server send back "valid" or "invalid"
     if ((userName=="Arash") && (pass=="2443377")){
         update.menuHeader = "close";
