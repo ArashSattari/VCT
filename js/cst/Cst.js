@@ -3,109 +3,78 @@
  */
  //version numbering for .js files. http://stackoverflow.com/questions/2185872/force-browsers-to-get-latest-js-and-css-files-in-asp-net-application
 
+
 var CST = {};
 
-CST.init = function(scen, cam)
-{
+CST.createBannerVariables = function(data, callback) {
+        var i, single_banner, banner_data, number_of_banners;
+
+        //Determine the number of banners in database.
+        number_of_banners = data.num_results;
+
+        //Fetch all the banners and store their relevant image information into a separate array.
+        banner_data = [];
+        var ix, iz, iy, crx, cry, iry, height, width, img_url;
+        for (i=0; i<number_of_banners; i++) {
+            //Different measurements: coordinates, rotation, width, height and location in /data
+            ix = data.objects[i].ix;
+            iz = data.objects[i].iy;
+            iy = data.objects[i].iz;
+            crx = data.objects[i].crx;
+            cry = data.objects[i].cry;
+            iry = data.objects[i].iry;
+            height = data.objects[i].ih;
+            width = data.objects[i].iw;
+            image_url = data.objects[i].img_url;
+
+            //Push the banner to the banner_data array.
+            single_banner = {'ix' : ix, 'iz' : iz, 'iy' : iy, 'crx' : crx, 'cry' : cry, 'iry': iry, 'height' : height, 'width' : width, 'image_url' : image_url};
+            banner_data.push(single_banner);
+            console.log(banner_data);
+            };
+
+        callback(banner_data, number_of_banners);
+};
+
+CST._createBanners = function(banner_data, number_of_banners) {
+    var banner, i;
+
+    //For each loop add a single banner to the scene.
+    for (i=0; i<number_of_banners; i++) {
+        //Creating the banner texture and shape.
+        var texture = THREE.ImageUtils.loadTexture(banner_data[i]['image_url']);
+        var material = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide}); //Remove DoubleSide to make banner one sided only.
+        var geometry = new THREE.PlaneGeometry(banner_data[i]['width'], banner_data[i]['height']);
+        var banner = new THREE.Mesh(geometry, material);
+
+        //Giving location for the banner.
+        banner.position.x = banner_data[i]['ix']; //|| 0;
+        banner.position.y = banner_data[i]['iy']; //|| 0;
+        banner.position.z = banner_data[i]['iz']; //|| 0;
+        banner.rotation.x = banner_data[i]['crx']; //|| 0;
+        banner.rotation.y = banner_data[i]['cry']; //|| 0;
+        banner.rotation.z = banner_data[i]['iry']; //|| 0;
+        this._scene.add(banner);
+    };
+
+};
+
+//Here is the cst initialization function.
+CST.init = function(scen, cam) {
     this._scene = scen;
     this._camera = cam;
 
-    // entry point
-    this._createBanners();
-    this.fetchData();
-
-    //TODO: implement banners navigation
-
-    // TODO: implement banner change url
-
-};
-CST.fetchData = function() {
-    //Fetches the sign data
-
+    //Guide for Arrash: make all the stuff you want to have synchronous into function and call use them similarly as below. If you need the
+    //values the previous function used call them as in row #72 and #74. createBannerVariables returns banner_data and number_of_banners
+    //for CST._createBanners. Additionally add line e.g. "callback(banner_data, number_of_banners);" as the last line of the previous
+    //function AND "callback" must be argument for the functions to be ran. That "callback" variable is defined in the functions and
+    //it must be written to the "main" just like below. Give the callback argument as function like: function(arguments){next_function(arguments)});.
+    //Fetching data from api/v1.0/sign.
     $.getJSON("api/v1.0/sign", function(data) {
-        var data_values;
-        console.log(data);
-        // data_values contains all the relevant data under /api/v1.0/'sign'
-        data_values = data.objects[0];
-        // Uncomment next line to see the it nicely in console:
-        console.log(JSON.stringify(data_values));
-
-        // company_Data contains all the data of the company.
-        company_data = data_values.company;
-        // Uncomment next line to see the it nicely in console:
-        console.log(JSON.stringify(company_data));
+        //Creating necessary variables for _createBanners function.
+        CST.createBannerVariables(data, function(banner_data, number_of_banners) {
+            //Adding the banners to the scene.
+            CST._createBanners(banner_data, number_of_banners);
         });
-
-
-        };
-
-
-CST._createBanners = function() {
-    var banners;
-//TODO: this is only for one banner, make it for multiple
-    // load the data and use it to display the banners using the code below
-    //TODO: create data
-    //TODO: get image URLs
-
-
-    // Fetching multiple banner.
-
-    // Goes through the whole database and fetches all of the banner ID's. Returns a ?list? with all of the banner ID's?.
-    // How is the loading area per time handled?
-        //This is for HTML table
-        // data_rows = data.getElementById(tableId).getElementsByTagName("tr").length;
-    /*
-        for (i=0; i < data_rows; i++) {
-            // List containing all of the banners data: width, heigth etc.
-            // This line separates data_rows
-            banners = data[i] // Or push?
-            for (j=0; j < r
-            banners = data_rows[i];
-
-
-        }
-    */
-
-
-
-
-    //for (i = 0; i < "database length here: data.length"; i++)
-
-
-
-    // Creates a single banner.
-    var texture = THREE.ImageUtils.loadTexture("/data/banners/kissa.jpg"); //imgURL
-    //texture.needsUpdate = true; // call this after you change the texture url
-    var test_data = {
-        'width':5,
-        'heigth':5,
-        'ix':-73.46322679386216,
-        'iy':14,
-        'iz':42.52478028242652,
-        'irx':2,
-        'iry':2,
-        'irz':2,
-    };
-    /*data.width:5,
-        data.height:5,
-        data.ix:-73.46322679386216,
-        data.iy:14,
-        data.iz:42.52478028242652,
-        data.irx:2,
-        data.iry:2,
-        data.irz:2*/
-
-
-    var material = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide}); //Remove DoubleSide to make banner one sided only.
-    var geometry = new THREE.PlaneGeometry(test_data['width'], test_data['heigth']);
-    var banner = new THREE.Mesh(geometry, material);
-
-
-    banner.position.x = test_data['ix']; //|| 0;
-    banner.position.y = test_data['iy']; //|| 0;
-    banner.position.z = test_data['iz']; //|| 0;
-    banner.rotation.x = test_data['irx']; //|| 0;
-    banner.rotation.y = test_data['iry']; //|| 0;
-    banner.rotation.z = test_data['irz']; //|| 0;
-    this._scene.add(banner);
+    });
 };
