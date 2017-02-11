@@ -6,6 +6,7 @@
 
 var CST = {};
 
+//This function creates an array of banners for _createBanner function.
 CST.createBannerVariables = function(data, callback) {
         var i, single_banner, banner_data, number_of_banners;
 
@@ -36,6 +37,7 @@ CST.createBannerVariables = function(data, callback) {
         callback(banner_data, number_of_banners);
 };
 
+//Creates all of the banners, which information is in the database.
 CST._createBanners = function(banner_data, number_of_banners) {
     var banner, i;
 
