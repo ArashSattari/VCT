@@ -11,18 +11,26 @@ var update = {
     menuHeader: "close",
     menuBody: "close"
 };
+var user = {
+    id: "",
+    userName: "",
+    pass: "",
+    companyName : "",
+    signs: []
+}
 var userName ="" ;
 var pass = "" ;
 var validPass = "";
-var userShopsList;
+var userShopsList = [];
 var selectedShop;
+var userPassStatus = "";
 
 $("#updateMenu").hide();
 $("#helpPage").hide();
 $("#updateMenu .body .selectNewSign input").hide();
 //hide select shop section
-$("#updateMenu .selectShop").hide();
-$("#selectShopFieldTitle").hide();
+//$("#updateMenu .selectShop").hide();
+//$("#selectShopFieldTitle").hide();
 
 // close help page
 function closeHelpPage() {
@@ -94,35 +102,40 @@ function signInClickHandler() {
     }   
 } 
 
-// get user's data and checking user name an password validity (NOT COMPLETED)
-function userPassValidityCheck(){
-    userName = $("#signInMenu .body .userNameInput").val();
-    pass =$("#signInMenu .body .passwordInput").val();
-    //-----userName and pass have to send to the server
-    $.getJSON("api/v1.0/user", function(data){
-
-    });
-
-    //-----server send back "valid" or "invalid"
-    if ((userName=="Arash") && (pass=="2443377")){
-        update.menuHeader = "close";
-        return "valid";
-    }
-    else{
-        return "invalid";
-    }
-    //-------------------------------------------------
-}
 
 //click handler for sign-in button
 $(document).on("click", "#signInMenu .body button", signInButtonClickHandler)
 function signInButtonClickHandler(){
-    var userPassStatus = userPassValidityCheck();
+    userName = $("#signInMenu .body .userNameInput").val();
+    pass =$("#signInMenu .body .passwordInput").val();
+    // get user's data and checking user name an password validity
+    $.getJSON("api/v1.0/user?q="+'{"filters":[{"name":"user_name","op":"eq","val":"'+userName+'"}]}', function(data){
+        if(data.num_results) {
+            var data_values = data.objects[0];
+            user.pass = data_values.password;
+            user.id = data_values.id;
+            user.signs = data_values.signs;
+            user.companyName = data_values.company.company_name;
+            //alert(user.signs[0].id);
+            if (pass == user.pass) {
+                update.menuHeader = "close";
+                userPassStatus ="valid";
+            }
+            else{userPassStatus = "invalid";}
+        }
+        else{userPassStatus = "invalid";}
+    //-------------------------------------------------
+        checkSignInStatusAndUpdateMenus();
+    })
+        .error(function () {alert("error");});
+}
+
+function checkSignInStatusAndUpdateMenus(){
     if (userPassStatus=="valid"){
         signIn.status = "sign-in";
         closeSignInHeader();
         closeSginInBody();
-        //wait unill sign in menu be closed then show update menu and sign out button (text)
+        //wait until sign in menu be closed then show update menu and sign out button (text)
         setTimeout(function(){
             $("#updateMenu").show();
             $("#signInMenu .header .text").text("SIGN OUT");
@@ -142,12 +155,7 @@ function signInButtonClickHandler(){
 
 //load shops combobox
 function loadShopsComboBox() {
-    //!!! this list is just for test. It has to be gotten from server
-    userShopsList = [
-        "Op-Isonkadun konttori",
-        "Op-Pohjola",
-        "Op-Kaakkurin konttori",
-        "Op-Ritaharjun konttori"];
+    userShopsList.push(user.companyName);
     $("#shopsComboBox").jqxComboBox({
     source: userShopsList,
     width: '200px',
@@ -155,7 +163,7 @@ function loadShopsComboBox() {
     autoDropDownHeight: true,
     displayMember: 'text',
     selectedIndex: 0});
-    //by defult firs row of combobox is allocated to selectedShop
+    //by default firs row of combobox is allocated to selectedShop
     selectedShop = userShopsList[0];
     $('#shopsComboBox').bind('select', function (event) {
     var args = event.args;
