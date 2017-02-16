@@ -1,13 +1,32 @@
-var note_cube;
+var noteCube;
 
-function createNoteCube() {
-
-    var geometry = new THREE.CubeGeometry(2 ,2 ,2);
-    var material =  new THREE.MeshPhongMaterial({map:
-    THREE.ImageUtils.loadTexture("UI/img/sign_in_icon_blue.png")});
-    note_cube = new THREE.Mesh(geometry, material);
-    note_cube.position.set(-71.1156, 18.36, 56.5849);
-    note_cube.rotation.y -= 0.56;
-    scene.add(note_cube);
+function createNoteCube(px, py, pz, scales, ry) {
+    var geometry = new THREE.CubeGeometry( scales, scales, scales);
+    var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("UI/img/note_1.png") } );
+    noteCube = new THREE.Mesh(geometry, material );
+    noteCube.position.set(px, py, pz);
+    noteCube.rotation.y -= ry;
+    scene.add(noteCube);
 }
 
+/*
+class cube {
+    constructor(px, py, pz, scales, ry) {
+    this.px = px;
+    this.py = py;
+    this.pz =pz;
+    this.scales = scales;
+    this.ry =ry;
+  }
+
+  create(){
+    var geometry = new THREE.CubeGeometry( this.scales, this.scales, this.scales);
+    var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("UI/img/note_1.png") } );
+    var noteCube = new THREE.Mesh(geometry, material );
+    noteCube.position.set(this.px, this.py, this.pz);
+    noteCube.rotation.y -= this.ry;
+    scene.add(noteCube);
+  }
+
+}
+*/

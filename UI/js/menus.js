@@ -275,12 +275,20 @@ function selectNextSign () {
         // set camera position and rotation
         // set cube size, position and rotation
     }
+
+
+
 }
+
 function selectPreviousSign () {
+
     // not completed !!
     cube.scale.set(3.5, 0.88, 0.3);
     cube.position.set(-71.1156, 18.36, 56.5849);
     //cube.rotation.y -= 0.56;
+
+
+
 }
 
 //highlight sign selector buttons (forward/backward) when mouse moves on it
@@ -319,7 +327,7 @@ function updateSign () {
     //alert("y: " + cube.position.y);
 
     //for test
-    createNoteCube();
+    createNoteCube(-75.82862, 16.1, 53.748101, 1.5, 0.56);
 }
 
 //highlight update sign button when mouse moves on it
