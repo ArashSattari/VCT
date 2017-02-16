@@ -25,43 +25,8 @@ function spinNoteCubeStart(speed){
     setInterval(spinNoteCube, speed);
 }
 
-function noteCubeMouseOverEnable(){
-    raycaster = new THREE.Raycaster();
-    raycaster.setFromCamera( mouse, yawObject );
-    stats = new Stats();
-    document.addEventListener('mouseover', onDocumentMove, false);
-    window.addEventListener( 'resize', onWindowResize, false );
+function noteCubeClickEnable(){
 
-    // find intersections
-    container.appendChild( stats.dom );
-    stats.update();
-
-    var intersects = raycaster.intersectObjects( scene.children );
-    if ( intersects.length > 0 ) {
-        alert("mouse over");
-        if ( INTERSECTED != intersects[ 0 ].object ) {
-            if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-            INTERSECTED = intersects[ 0 ].object;
-            INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-            INTERSECTED.material.emissive.setHex( 0xff0000 );
-            alert("mouse over");
-        }
-    } else {
-        if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-        INTERSECTED = null;
-    }
-}
-
-function onWindowResize() {
-    yawObject.aspect = window.innerWidth / window.innerHeight;
-    yawObject.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-}
-
-function onDocumentMove(event) {
-    event.preventDefault();
-    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 }
 
 
