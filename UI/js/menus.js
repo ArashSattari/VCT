@@ -328,6 +328,8 @@ function updateSign () {
 
     //for test
     createNoteCube(-75.82862, 16.1, 53.748101, 1.5, 0.56);
+    spinNoteCubeStart(70);
+    noteCubeMouseOverEnable();
 }
 
 //highlight update sign button when mouse moves on it
