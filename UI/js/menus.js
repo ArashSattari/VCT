@@ -13,6 +13,9 @@ var update = {
     status: "",
     currentSignIndex: 0
 };
+var note ={
+    menu: "close"
+}
 var user = {
     id: "",
     userName: "",
@@ -29,6 +32,7 @@ var userPassStatus = "";
 var cube; // for signs' highlight
 
 $("#updateMenu").hide();
+$("#noteMenu").hide();
 $("#helpPage").hide();
 $("#updateMenu .body .selectNewSign input").hide();
 //hide select shop section
@@ -141,6 +145,7 @@ function checkSignInStatusAndUpdateMenus(){
         //wait until sign in menu be closed then show update menu and sign out button (text)
         setTimeout(function(){
             $("#updateMenu").show();
+            $("#noteMenu").show();
             $("#signInMenu .header .text").text("SIGN OUT");
             $("#signInMenu .header .text").css("text-decoration", "underline");
             $("#signInMenu .header .headerIcon").attr("src", "UI/img/sign_in_icon_blue.png");
@@ -187,6 +192,7 @@ function signOutClickHandler(){
     closeSignInHeader();
     setTimeout(function(){
             $("#updateMenu").hide();
+            $("#noteMenu").hide();
             $("#signInMenu .header .text").text("SIGN IN");
             $("#signInMenu .header .text").css("color", "#AAAAAA");
             $("#signInMenu .header .text").css("text-decoration", "none");
@@ -325,11 +331,6 @@ function updateSign () {
     //alert("x: " + cube.position.x + "   z: " + cube.position.z);
     //cube.position.y -= 0.02;
     //alert("y: " + cube.position.y);
-
-    //for test
-    createNoteCube(-75.82862, 16.1, 53.748101, 1.5, 0.56);
-    spinNoteCubeStart(70);
-
 }
 
 //highlight update sign button when mouse moves on it
@@ -339,3 +340,29 @@ $("#updateMenu .body button").mouseover(function(){
 $("#updateMenu .body button").mouseout(function(){
     $("#updateMenu .body button").css("color", "#AAAAAA");
 });
+
+//click handler for note icon (header icon)
+$(document).on("click", "#noteMenu .header .headerIcon", noteIconClickHandler);
+function noteIconClickHandler () {
+    if (note.menu == "close"){
+        $("#noteMenu .header .headerIcon").attr("src", "UI/img/note_blue.png");
+        note.menu = "open";
+        showNoteCubes();
+    }
+    else {
+        $("#noteMenu .header .headerIcon").attr("src", "UI/img/note_grey.png");
+        note.menu = "close";
+        hideNoteCubes();
+    }
+
+}
+
+function showNoteCubes() {
+    //for test
+    createNoteCube(-75.82862, 16.1, 53.748101, 1.5, 0.56);
+    spinNoteCubeStart(70);
+}
+
+function hideNoteCubes() {
+
+}
