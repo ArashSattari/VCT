@@ -248,3 +248,14 @@
     margin-top: 410px;
     outline: 0;
 }
+
+#noteMenu .header {
+    height: 40px;
+    width: 80px;
+    position: absolute;
+    right: -35px;
+    top: 215px;
+    border: 3px solid #999999;
+    background-color: #222222;
+    border-radius: 20px;
+}

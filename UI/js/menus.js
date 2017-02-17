@@ -9,8 +9,13 @@ var signIn = {
 };
 var update = {
     menuHeader: "close",
-    menuBody: "close"
+    menuBody: "close",
+    status: "",
+    currentSignIndex: 0
 };
+var note ={
+    menu: "close"
+}
 var user = {
     id: "",
     userName: "",
@@ -24,8 +29,10 @@ var validPass = "";
 var userShopsList = [];
 var selectedShop;
 var userPassStatus = "";
+var cube; // for signs' highlight
 
 $("#updateMenu").hide();
+$("#noteMenu").hide();
 $("#helpPage").hide();
 $("#updateMenu .body .selectNewSign input").hide();
 //hide select shop section
@@ -138,6 +145,7 @@ function checkSignInStatusAndUpdateMenus(){
         //wait until sign in menu be closed then show update menu and sign out button (text)
         setTimeout(function(){
             $("#updateMenu").show();
+            $("#noteMenu").show();
             $("#signInMenu .header .text").text("SIGN OUT");
             $("#signInMenu .header .text").css("text-decoration", "underline");
             $("#signInMenu .header .headerIcon").attr("src", "UI/img/sign_in_icon_blue.png");
@@ -184,6 +192,7 @@ function signOutClickHandler(){
     closeSignInHeader();
     setTimeout(function(){
             $("#updateMenu").hide();
+            $("#noteMenu").hide();
             $("#signInMenu .header .text").text("SIGN IN");
             $("#signInMenu .header .text").css("color", "#AAAAAA");
             $("#signInMenu .header .text").css("text-decoration", "none");
@@ -253,10 +262,39 @@ function updateClickHandler() {
 $(document).on("click", "#updateMenu .body .selectSign .forwardArrow", selectNextSign);
 $(document).on("click", "#updateMenu .body .selectSign .backwardArrow", selectPreviousSign);
 function selectNextSign () {
-    alert("Next Sign");
+    if (update.status != "signSelecting"){
+        update.status = "signSelecting";
+        //base on sign number update.currentSignIndex data :
+        // set camera position and rotation
+        yawObject.position.set(-80, 14, 74);
+        yawObject.rotation.y -= 0.51;
+        // create the Cube
+        cube = new THREE.Mesh( new THREE.CubeGeometry(1, 1, 1), new THREE.MeshNormalMaterial() );
+        cube.scale.set(4.8, 0.88, 0.3);
+        cube.position.set(-74.75879, 18.36, 54.300894);
+        cube.rotation.y -= 0.56;
+        scene.add(cube);
+    }
+    else{
+        update.currentSignIndex++;
+        //base on sign number update.currentSignIndex data :
+        // set camera position and rotation
+        // set cube size, position and rotation
+    }
+
+
+
 }
+
 function selectPreviousSign () {
-    alert("Previous Sign");
+
+    // not completed !!
+    cube.scale.set(3.5, 0.88, 0.3);
+    cube.position.set(-71.1156, 18.36, 56.5849);
+    //cube.rotation.y -= 0.56;
+
+
+
 }
 
 //highlight sign selector buttons (forward/backward) when mouse moves on it
@@ -273,9 +311,6 @@ $("#updateMenu .body .selectSign .backwardArrow").mouseout(function(){
     $("#updateMenu .body .selectSign .backwardArrow").attr("src", "UI/img/BackwardArrow_grey.png");
 });
 
-//click handler for add new sign 
-
-
 //highlight add new sign  when mouse moves on it
 $("#updateMenu .body .selectNewSign .add").mouseover(function(){
     $("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_blue.png");
@@ -287,7 +322,15 @@ $("#updateMenu .body .selectNewSign .add").mouseout(function(){
 //click handler for update sign button
 $(document).on("click", "#updateMenu .body button", updateSign);
 function updateSign () {
-    alert("UPDATE SIGN");
+    // for finding the position of a sign (for test)
+    //cube.position.x += .1 * Math.cos(cube.rotation.y);
+    //cube.position.z -= .1 * Math.sin(cube.rotation.y);
+    //alert("x: " + cube.position.x + "   z: " + cube.position.z);
+    //cube.position.x += .1 * Math.cos(cube.rotation.y + 90 * Math.PI/180);
+    //cube.position.z -= .1 * Math.sin(cube.rotation.y + 90 * Math.PI/180);
+    //alert("x: " + cube.position.x + "   z: " + cube.position.z);
+    //cube.position.y -= 0.02;
+    //alert("y: " + cube.position.y);
 }
 
 //highlight update sign button when mouse moves on it
@@ -297,3 +340,29 @@ $("#updateMenu .body button").mouseover(function(){
 $("#updateMenu .body button").mouseout(function(){
     $("#updateMenu .body button").css("color", "#AAAAAA");
 });
+
+//click handler for note icon (header icon)
+$(document).on("click", "#noteMenu .header .headerIcon", noteIconClickHandler);
+function noteIconClickHandler () {
+    if (note.menu == "close"){
+        $("#noteMenu .header .headerIcon").attr("src", "UI/img/note_blue.png");
+        note.menu = "open";
+        showNoteCubes();
+    }
+    else {
+        $("#noteMenu .header .headerIcon").attr("src", "UI/img/note_grey.png");
+        note.menu = "close";
+        hideNoteCubes();
+    }
+
+}
+
+function showNoteCubes() {
+    //for test
+    createNoteCube(-75.82862, 16.1, 53.748101, 1.5, 0.56);
+    spinNoteCubeStart(70);
+}
+
+function hideNoteCubes() {
+
+}
