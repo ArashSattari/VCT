@@ -1,13 +1,29 @@
 var noteCube;
+var interval;
+
 
 function createNoteCube(px, py, pz, scales, ry) {
-    var geometry = new THREE.CubeGeometry( scales, scales, scales);
-    var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture("UI/img/note_1.png") } );
-    noteCube = new THREE.Mesh(geometry, material );
+    var geometry = new THREE.CubeGeometry(scales, scales, scales);
+    var material = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture("UI/img/note_1.png")});
+    noteCube = new THREE.Mesh(geometry, material);
     noteCube.position.set(px, py, pz);
     noteCube.rotation.y -= ry;
     scene.add(noteCube);
 }
+
+function spinNoteCube() {
+    noteCube.rotation.y -= 0.02;
+}
+
+function spinNoteCubeStop(){
+    clearInterval(interval);
+}
+
+function spinNoteCubeStart(speed){
+    setInterval(spinNoteCube, speed);
+}
+
+
 
 /*
 class cube {
