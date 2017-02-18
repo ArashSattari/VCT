@@ -109,8 +109,12 @@
                 <p id="selectSignFieldTitle">Select a sign</p>
                 <!-- Selecting New Sign -->
                 <div class="selectNewSign">
-                    <label for="browse"><img class="add" src="UI/img/add_grey.png" /></label>
-                    <input id="browse" type="file" />
+                    <!--<label for="browse"><img class="add" src="UI/img/add_grey.png" /></label>-->
+                    <!--<input id="browse" type="file" />-->
+                    <form action="/api/upload" method=post enctype=multipart/form-data>
+                      <p><input type=file style="display: inline;" name=file>
+                         <input type=submit style="display: inline;" value=Upload>
+                    </form>
                 </div>
                 <p id="selectNewSignFieldTitle">Add the new sign</p>
                 <button>UPDATE SIGN</button>
