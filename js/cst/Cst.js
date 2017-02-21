@@ -51,8 +51,8 @@ CST._createBanners = function(banner_data, number_of_banners) {
 
         //Giving location for the banner.
         banner.position.x = banner_data[i]['ix']; //|| 0;
-        banner.position.y = banner_data[i]['iy']; //|| 0;
-        banner.position.z = banner_data[i]['iz']; //|| 0;
+        banner.position.y = banner_data[i]['iz']; //|| 0;
+        banner.position.z = banner_data[i]['iy']; //|| 0;
         banner.rotation.x = banner_data[i]['crx']; //|| 0;
         banner.rotation.y = banner_data[i]['cry']; //|| 0;
         banner.rotation.z = banner_data[i]['iry']; //|| 0;
@@ -66,12 +66,6 @@ CST.init = function(scen, cam) {
     this._scene = scen;
     this._camera = cam;
 
-    //Guide for Arrash: make all the stuff you want to have synchronous into function and call use them similarly as below. If you need the
-    //values the previous function used call them as in row #72 and #74. createBannerVariables returns banner_data and number_of_banners
-    //for CST._createBanners. Additionally add line e.g. "callback(banner_data, number_of_banners);" as the last line of the previous
-    //function AND "callback" must be argument for the functions to be ran. That "callback" variable is defined in the functions and
-    //it must be written to the "main" just like below. Give the callback argument as function like: function(arguments){next_function(arguments)});.
-    //Fetching data from api/v1.0/sign.
     $.getJSON("api/v1.0/sign", function(data) {
         //Creating necessary variables for _createBanners function.
         CST.createBannerVariables(data, function(banner_data, number_of_banners) {
