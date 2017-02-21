@@ -23,6 +23,9 @@ function spinNoteCubeStart(speed){
     setInterval(spinNoteCube, speed);
 }
 
+function removeNodeCube() {
+    scene.remove(netCube);
+}
 
 
 /*

@@ -364,5 +364,5 @@ function showNoteCubes() {
 }
 
 function hideNoteCubes() {
-
+    removeNodeCube();
 }
