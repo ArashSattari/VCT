@@ -225,6 +225,11 @@
     margin-left: 10px;
     cursor: pointer;
 }
+#updateMenu .body .selectNewSign .updateButton {
+    height: 40px;
+    margin-top: 15px;
+    margin-left: 78px;
+}
 #appLogo {
     position: fixed;
     height: 50px;
@@ -233,21 +238,29 @@
     margin-bottom: 10px;
 }
 
-#updateMenu .body button {
+#updateButton {
     position: absolute;
-    border: 2px solid #BBBBBB;
-    color: #AAAAAA;
-    background-color: #222222;
-    border-radius: 20px;
     width: 150px;
     height: 40px;
-    font-size: 15px;
-    text-align: center;
-    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
     margin-left: 70px;
     margin-top: 410px;
-    outline: 0;
 }
+
+/*#updateMenu .body button {*/
+    /*position: absolute;*/
+    /*border: 2px solid #BBBBBB;*/
+    /*color: #AAAAAA;*/
+    /*background-color: #222222;*/
+    /*border-radius: 20px;*/
+    /*width: 150px;*/
+    /*height: 40px;*/
+    /*font-size: 15px;*/
+    /*text-align: center;*/
+    /*font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;*/
+    /*margin-left: 70px;*/
+    /*margin-top: 410px;*/
+    /*outline: 0;*/
+/*}*/
 
 #noteMenu .header {
     height: 40px;

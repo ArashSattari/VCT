@@ -318,45 +318,39 @@ $("#updateMenu .body .selectNewSign .add").mouseover(function(){
 $("#updateMenu .body .selectNewSign .add").mouseout(function(){
     $("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");
 });
-//uploadImage listener
-// $(document).on("click", "#uploadImage", uploadImageListener);
-// function  uploadImageListener() {
-//     alert("fg");
-//     var data = new FormData();
-//     var file = $('input[type=file]').val();
-//     data.append('file', file);
-//
-//     //jQuery.each(jQuery('#file')[0].files, function(i, file) {
-//     //    data.append('file-'+i, file);
-//    // });
-//
-//     jQuery.ajax({
-//     url: 'api/upload',
-//     data: data,
-//     cache: false,
-//     contentType: false,
-//     processData: false,
-//     type: 'POST',
-//     success: function(data){
-//         alert(data);
-//     }
-// });
-//
-// }
 
-$("#data").submit(function() {
+
+$("#data").submit(function(){
+
     var formData = new FormData($(this)[0]);
-    $.post($(this).attr("action"), formData, function(data) {
-        alert(data);
+
+    $.ajax({
+        url: '/api/upload',
+        type: 'POST',
+        data: formData,
+        async: false,
+        success: function (data) {
+            alert(data)
+        },
+        cache: false,
+        contentType: false,
+        processData: false
     });
+
     return false;
-    });
+});
+
+//highlight update sign button when mouse moves on it
+$("#updateMenu .body .selectNewSign .updateButton").mouseover(function(){
+    $("#updateMenu .body .selectNewSign .updateButton").attr("src", "UI/img/update_blue.png");
+});
+$("#updateMenu .body .selectNewSign .updateButton").mouseout(function(){
+    $("#updateMenu .body .selectNewSign .updateButton").attr("src", "UI/img/update_grey.png");
+});
 
 //click handler for update sign button
-$(document).on("click", "#updateMenu .body button", updateSign);
-function updateSign () {
-
-
+//$(document).on("click", "#updateMenu .body button", updateSign);
+//function updateSign () {
 
     // get uploaded image URI
     // $.getJSON("api/upload", function(data){
@@ -372,12 +366,16 @@ function updateSign () {
     //cube.position.x += .1 * Math.cos(cube.rotation.y);
     //cube.position.z -= .1 * Math.sin(cube.rotation.y);
     //alert("x: " + cube.position.x + "   z: " + cube.position.z);
+
     //cube.position.x += .1 * Math.cos(cube.rotation.y + 90 * Math.PI/180);
     //cube.position.z -= .1 * Math.sin(cube.rotation.y + 90 * Math.PI/180);
     //alert("x: " + cube.position.x + "   z: " + cube.position.z);
+
     //cube.position.y -= 0.02;
     //alert("y: " + cube.position.y);
-}
+
+    //cube.rotation.y -= 0.56;
+//}
 
 //highlight update sign button when mouse moves on it
 $("#updateMenu .body button").mouseover(function(){
