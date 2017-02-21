@@ -109,15 +109,18 @@
                 <p id="selectSignFieldTitle">Select a sign</p>
                 <!-- Selecting New Sign -->
                 <div class="selectNewSign">
-                    <!--<label for="browse"><img class="add" src="UI/img/add_grey.png" /></label>-->
+                    <label for="browse"><img class="add" src="UI/img/add_grey.png" /></label>
+                    <!--<label for="uploadImage"><img class="headerIcon" src="UI/img/help_icon_blue.png" /></label>-->
                     <!--<input id="browse" type="file" />-->
-                    <form action="/api/upload" method=post enctype=multipart/form-data>
-                      <p><input type=file style="display: inline;" name=file>
-                         <input type=submit style="display: inline;" value=Upload>
+                    <form id="data" method="post" enctype="multipart/form-data">
+                        <input id="browse" type=file name=file>
+                        <!--<input id="uploadImage" type=submit style="display: inline;" value=Upload>-->
+                        <!--<button id="updateSign">UPDATE SIGN</button>-->
                     </form>
                 </div>
                 <p id="selectNewSignFieldTitle">Add the new sign</p>
-                <button>UPDATE SIGN</button>
+                <button id="updateSign" type="submit" form="data" value="Submit">UPDATE SIGN</button>
+
             </div>
             <div class="header">
                 <img class=headerIcon src="UI/img/update_icon_grey.png" alt=icon>
@@ -125,6 +128,7 @@
             </div>
         </section>
         <img id="appLogo" src="UI/img/app_logo.png" alt="store" />
+
 
         <!-- UI -->
         <link rel="stylesheet" href="UI/css/helpPage.css">

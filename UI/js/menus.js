@@ -318,10 +318,56 @@ $("#updateMenu .body .selectNewSign .add").mouseover(function(){
 $("#updateMenu .body .selectNewSign .add").mouseout(function(){
     $("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");
 });
+//uploadImage listener
+// $(document).on("click", "#uploadImage", uploadImageListener);
+// function  uploadImageListener() {
+//     alert("fg");
+//     var data = new FormData();
+//     var file = $('input[type=file]').val();
+//     data.append('file', file);
+//
+//     //jQuery.each(jQuery('#file')[0].files, function(i, file) {
+//     //    data.append('file-'+i, file);
+//    // });
+//
+//     jQuery.ajax({
+//     url: 'api/upload',
+//     data: data,
+//     cache: false,
+//     contentType: false,
+//     processData: false,
+//     type: 'POST',
+//     success: function(data){
+//         alert(data);
+//     }
+// });
+//
+// }
+
+$("#data").submit(function() {
+    var formData = new FormData($(this)[0]);
+    $.post($(this).attr("action"), formData, function(data) {
+        alert(data);
+    });
+    return false;
+    });
 
 //click handler for update sign button
 $(document).on("click", "#updateMenu .body button", updateSign);
 function updateSign () {
+
+
+
+    // get uploaded image URI
+    // $.getJSON("api/upload", function(data){
+    //     var data_values = data.objects[0];
+    //     var test = data_values.filepath;
+    //
+    //     alert(test);
+    // //-------------------------------------------------
+    //
+    // });
+
     // for finding the position of a sign (for test)
     //cube.position.x += .1 * Math.cos(cube.rotation.y);
     //cube.position.z -= .1 * Math.sin(cube.rotation.y);
