@@ -341,11 +341,11 @@ $("#data").submit(function(){
 });
 
 //highlight update sign button when mouse moves on it
-$("#updateMenu .body .selectNewSign .updateButton").mouseover(function(){
-    $("#updateMenu .body .selectNewSign .updateButton").attr("src", "UI/img/update_blue.png");
+$("#updateMenu .body .updateButton").mouseover(function(){
+    $("#updateMenu .body .updateButton").attr("src", "UI/img/update_blue.png");
 });
-$("#updateMenu .body .selectNewSign .updateButton").mouseout(function(){
-    $("#updateMenu .body .selectNewSign .updateButton").attr("src", "UI/img/update_grey.png");
+$("#updateMenu .body .updateButton").mouseout(function(){
+    $("#updateMenu .body .updateButton").attr("src", "UI/img/update_grey.png");
 });
 
 //show selected image in update menu before uploading it
@@ -355,7 +355,7 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#updateMenu .body .selectNewSign .add').attr('src', e.target.result);
-        }
+        };
         reader.readAsDataURL(input.files[0]);
     }
 }
@@ -394,12 +394,12 @@ $("#browse").change(function(){
 //}
 
 //highlight update sign button when mouse moves on it
-$("#updateMenu .body button").mouseover(function(){
-    $("#updateMenu .body button").css("color", "#226AFF");
-});
-$("#updateMenu .body button").mouseout(function(){
-    $("#updateMenu .body button").css("color", "#AAAAAA");
-});
+// $("#updateMenu .body button").mouseover(function(){
+//     $("#updateMenu .body button").css("color", "#226AFF");
+// });
+// $("#updateMenu .body button").mouseout(function(){
+//     $("#updateMenu .body button").css("color", "#AAAAAA");
+// });
 
 //click handler for note icon (header icon)
 $(document).on("click", "#noteMenu .header .headerIcon", noteIconClickHandler);

@@ -51,8 +51,8 @@ CST._createBanners = function(banner_data, number_of_banners) {
 
         //Giving location for the banner.
         banner.position.x = banner_data[i]['ix']; //|| 0;
-        banner.position.y = banner_data[i]['iy']; //|| 0;
-        banner.position.z = banner_data[i]['iz']; //|| 0;
+        banner.position.y = banner_data[i]['iz']; //|| 0;
+        banner.position.z = banner_data[i]['iy']; //|| 0;
         banner.rotation.x = banner_data[i]['crx']; //|| 0;
         banner.rotation.y = banner_data[i]['cry']; //|| 0;
         banner.rotation.z = banner_data[i]['iry']; //|| 0;

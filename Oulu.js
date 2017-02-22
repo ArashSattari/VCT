@@ -75,9 +75,9 @@ function init()
 	container.appendChild(renderer.domElement);
 	// EVENTS
 
-	THREEx.FullScreen.bindKey({
-		charCode: 'm'.charCodeAt(0)
-	});
+	//THREEx.FullScreen.bindKey({
+	//	charCode: 'm'.charCodeAt(0)
+	//});
 
 	// FLY CONTROLS
 	// flyControls = new THREE.FlyControls(camera);
