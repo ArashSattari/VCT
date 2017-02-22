@@ -221,14 +221,16 @@
 #updateMenu .body .selectNewSign .add {
     height: 180px;
     width: 240px;
+    object-fit: contain;
     margin-top: 15px;
     margin-left: 10px;
     cursor: pointer;
 }
-#updateMenu .body .selectNewSign .updateButton {
+#updateMenu .body .updateButton {
     height: 40px;
-    margin-top: 15px;
-    margin-left: 78px;
+    margin-top: 410px;
+    margin-left: 85px;
+    position: absolute;
 }
 #appLogo {
     position: fixed;

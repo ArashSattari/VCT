@@ -313,13 +313,13 @@ $("#updateMenu .body .selectSign .backwardArrow").mouseout(function(){
 
 //highlight add new sign  when mouse moves on it
 $("#updateMenu .body .selectNewSign .add").mouseover(function(){
-    $("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_blue.png");
+   if (update.status!="signSelected") {$("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_blue.png");}
 });
 $("#updateMenu .body .selectNewSign .add").mouseout(function(){
-    $("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");
+    if (update.status!="signSelected") {$("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");}
 });
 
-
+//update button click handler
 $("#data").submit(function(){
 
     var formData = new FormData($(this)[0]);
@@ -346,6 +346,22 @@ $("#updateMenu .body .selectNewSign .updateButton").mouseover(function(){
 });
 $("#updateMenu .body .selectNewSign .updateButton").mouseout(function(){
     $("#updateMenu .body .selectNewSign .updateButton").attr("src", "UI/img/update_grey.png");
+});
+
+//show selected image in update menu before uploading it
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#updateMenu .body .selectNewSign .add').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#browse").change(function(){
+    readURL(this);
+    update.status="signSelected";
 });
 
 //click handler for update sign button
@@ -404,9 +420,11 @@ function noteIconClickHandler () {
 function showNoteCubes() {
     //for test
     createNoteCube(-75.82862, 16.1, 53.748101, 1.5, 0.56);
-    spinNoteCubeStart(70);
+    spinNoteCubeStart(50);
 }
 
 function hideNoteCubes() {
-
+    spinNoteCubeStop();
+    scene.remove(noteCube);
+    render();
 }
