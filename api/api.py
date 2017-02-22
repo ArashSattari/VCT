@@ -68,6 +68,7 @@ def upload_file():
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
+        sign_id = request.form["sign_id"]
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
@@ -77,6 +78,10 @@ def upload_file():
             #filename = secure_filename(file.filename)
             filename = images.save(file)
             #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            sign = Sign.query.get(int(sign_id))
+            if sign:
+                sign.img_url = "/img/"+filename
+                db.session.commit()
             return json.dumps({'filepath': '/img/'+filename})
     return '''
     <!doctype html>

@@ -323,6 +323,8 @@ $("#updateMenu .body .selectNewSign .add").mouseout(function(){
 $("#data").submit(function(){
 
     var formData = new FormData($(this)[0]);
+    var sign_id = "1"; //TODO get sign id
+    formData.append("sign_id", sign_id);
 
     $.ajax({
         url: '/api/upload',
