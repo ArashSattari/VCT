@@ -118,6 +118,7 @@ function signInButtonClickHandler(){
     // get user's data and checking user name an password validity
     $.getJSON("api/v1.0/user?q="+'{"filters":[{"name":"user_name","op":"eq","val":"'+userName+'"}]}', function(data){
         if(data.num_results) {
+            console.log(data);
             var data_values = data.objects[0];
             user.pass = data_values.password;
             user.id = data_values.id;
@@ -323,7 +324,7 @@ $("#updateMenu .body .selectNewSign .add").mouseout(function(){
 $("#data").submit(function(){
 
     var formData = new FormData($(this)[0]);
-    var sign_id = "1"; //TODO get sign id
+    var sign_id = "10"; //TODO get sign id
     formData.append("sign_id", sign_id);
 
     $.ajax({
