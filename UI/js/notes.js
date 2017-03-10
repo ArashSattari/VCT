@@ -20,7 +20,7 @@ function spinNoteCubeStop(){
 }
 
 function spinNoteCubeStart(speed){
-    setInterval(spinNoteCube, speed);
+    interval = setInterval(spinNoteCube, speed);
 }
 
 
