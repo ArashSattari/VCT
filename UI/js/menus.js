@@ -15,14 +15,15 @@ var update = {
 };
 var note ={
     menu: "close"
-}
+};
 var user = {
     id: "",
     userName: "",
     pass: "",
     companyName : "",
     signs: []
-}
+};
+var sign_id = 0;
 var userName ="" ;
 var pass = "" ;
 var validPass = "";
@@ -117,6 +118,7 @@ function signInButtonClickHandler(){
     pass =$("#signInMenu .body .passwordInput").val();
     // get user's data and checking user name an password validity
     $.getJSON("api/v1.0/user?q="+'{"filters":[{"name":"user_name","op":"eq","val":"'+userName+'"}]}', function(data){
+        console.log(JSON.stringify(data));
         if(data.num_results) {
             var data_values = data.objects[0];
             user.pass = data_values.password;
@@ -169,20 +171,25 @@ function loadShopsComboBox() {
     width: '200px',
     height: '25px',
     autoDropDownHeight: true,
-    displayMember: 'text',
-    selectedIndex: 0});
-    //by default firs row of combobox is allocated to selectedShop
-    selectedShop = userShopsList[0];
-    $('#shopsComboBox').bind('select', function (event) {
-    var args = event.args;
-    var item = $('#shopsComboBox').jqxComboBox('getItem', args.index);
-    var selectedShop = item.label;
-    });
+    displayMember: 'text'});
 }
 
 //select a shop from combo
  $("#shopsComboBox").on('change', function (event) {
-    selectedShop = event.args.item.label;
+    //selectedShop = event.args.item.label;
+
+   // set camera position and rotation
+    update.currentSignIndex = 0;
+    sign_id = user.signs[update.currentSignIndex].id;
+    yawObject.position.set(-80, 14, 74);
+    yawObject.rotation.y -= 0.51;
+
+    //highlight first the sign (it's not completed, we should have highlights' dimensions to database.)
+     cube = new THREE.Mesh( new THREE.CubeGeometry(1, 1, 1), new THREE.MeshNormalMaterial() );
+     cube.scale.set(4.8, 0.88, 0.3);
+     cube.position.set(-74.75879, 18.36, 54.300894);
+     cube.rotation.y -= 0.56;
+     scene.add(cube);
  });
 
 //click handeler for sign out button (text)
@@ -262,39 +269,39 @@ function updateClickHandler() {
 $(document).on("click", "#updateMenu .body .selectSign .forwardArrow", selectNextSign);
 $(document).on("click", "#updateMenu .body .selectSign .backwardArrow", selectPreviousSign);
 function selectNextSign () {
-    if (update.status != "signSelecting"){
-        update.status = "signSelecting";
-        //base on sign number update.currentSignIndex data :
-        // set camera position and rotation
-        yawObject.position.set(-80, 14, 74);
-        yawObject.rotation.y -= 0.51;
-        // create the Cube
-        cube = new THREE.Mesh( new THREE.CubeGeometry(1, 1, 1), new THREE.MeshNormalMaterial() );
+    console.log(JSON.stringify(user.signs.length));
+
+    if (update.currentSignIndex < (user.signs.length - 1)){
+        ++update.currentSignIndex;
+        sign_id = user.signs[update.currentSignIndex].id;
+    }
+    console.log(JSON.stringify(sign_id));
+    // create the highlights (it's not completed, we should have highlights' dimensions to database.)
+    if (update.currentSignIndex == 0){
         cube.scale.set(4.8, 0.88, 0.3);
         cube.position.set(-74.75879, 18.36, 54.300894);
-        cube.rotation.y -= 0.56;
-        scene.add(cube);
     }
-    else{
-        update.currentSignIndex++;
-        //base on sign number update.currentSignIndex data :
-        // set camera position and rotation
-        // set cube size, position and rotation
+    if (update.currentSignIndex == 1){
+        cube.scale.set(3.5, 0.88, 0.3);
+        cube.position.set(-71.1156, 18.36, 56.5849);
     }
-
-
-
 }
 
 function selectPreviousSign () {
-
-    // not completed !!
-    cube.scale.set(3.5, 0.88, 0.3);
-    cube.position.set(-71.1156, 18.36, 56.5849);
-    //cube.rotation.y -= 0.56;
-
-
-
+    if (update.currentSignIndex > 0){
+        --update.currentSignIndex;
+        sign_id = user.signs[update.currentSignIndex].id;
+    }
+    console.log(JSON.stringify(sign_id));
+    // create the highlights (it's not completed, we should have highlights' dimensions to database.)
+    if (update.currentSignIndex == 0){
+        cube.scale.set(4.8, 0.88, 0.3);
+        cube.position.set(-74.75879, 18.36, 54.300894);
+    }
+    if (update.currentSignIndex == 1){
+        cube.scale.set(3.5, 0.88, 0.3);
+        cube.position.set(-71.1156, 18.36, 56.5849);
+    }
 }
 
 //highlight sign selector buttons (forward/backward) when mouse moves on it
@@ -323,7 +330,7 @@ $("#updateMenu .body .selectNewSign .add").mouseout(function(){
 $("#data").submit(function(){
 
     var formData = new FormData($(this)[0]);
-    var sign_id = "1"; //TODO get sign id
+    //var sign_id = "1"; //TODO get sign id
     formData.append("sign_id", sign_id);
 
     $.ajax({
