@@ -320,11 +320,31 @@ $("#updateMenu .body .selectNewSign .add").mouseout(function(){
     if (update.status!="signSelected") {$("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");}
 });
 
+change_banner = function(sign_id, data) {
+    //Determine the banner in question.
+    filepath = '/img/vompatti.jpg' //POISTA
+    sign_id = parseInt(sign_id);
+    var banner = scene.getObjectByName(sign_id);
+    console.log(typeof data);
+
+    //Image URL.
+    image_url = data.split(":").pop();
+    image_url = image_url.replace("}", '');
+    image_url = image_url.replace(/"/g, '');
+
+    //Change the image and update the texture to the scene.
+    banner.material.map = THREE.ImageUtils.loadTexture(image_url);
+    banner.material.map.needsUpdate = true;
+}
+
 //update button click handler
 $("#data").submit(function(){
 
     var formData = new FormData($(this)[0]);
+    //Change sign_id to numeric
     var sign_id = "10"; //TODO get sign id
+
+
     formData.append("sign_id", sign_id);
 
     $.ajax({
@@ -333,7 +353,8 @@ $("#data").submit(function(){
         data: formData,
         async: false,
         success: function (data) {
-            alert(data)
+            console.log(data)
+            change_banner(sign_id, data); //Update the banner with new texture.
         },
         cache: false,
         contentType: false,
