@@ -30,12 +30,14 @@ var validPass = "";
 var userShopsList = [];
 var selectedShop;
 var userPassStatus = "";
-var cube; // for signs' highlight
+var cube = new THREE.Mesh( new THREE.CubeGeometry(1, 1, 1), new THREE.MeshNormalMaterial() ); // for signs' highlight
+cube.rotation.y -= 0.56;
 
 $("#updateMenu").hide();
 $("#noteMenu").hide();
 $("#helpPage").hide();
 $("#updateMenu .body .selectNewSign input").hide();
+$("#noteMenu .note").hide();
 //hide select shop section
 //$("#updateMenu .selectShop").hide();
 //$("#selectShopFieldTitle").hide();
@@ -171,25 +173,26 @@ function loadShopsComboBox() {
     width: '200px',
     height: '25px',
     autoDropDownHeight: true,
-    displayMember: 'text'});
+    displayMember: 'text',
+    selectedIndex: null});
 }
 
 //select a shop from combo
  $("#shopsComboBox").on('change', function (event) {
     //selectedShop = event.args.item.label;
 
-   // set camera position and rotation
+    // set camera position and rotation
     update.currentSignIndex = 0;
     sign_id = user.signs[update.currentSignIndex].id;
     yawObject.position.set(-80, 14, 74);
     yawObject.rotation.y -= 0.51;
 
     //highlight first the sign (it's not completed, we should have highlights' dimensions to database.)
-     cube = new THREE.Mesh( new THREE.CubeGeometry(1, 1, 1), new THREE.MeshNormalMaterial() );
-     cube.scale.set(4.8, 0.88, 0.3);
-     cube.position.set(-74.75879, 18.36, 54.300894);
-     cube.rotation.y -= 0.56;
-     scene.add(cube);
+    //  cube = new THREE.Mesh( new THREE.CubeGeometry(1, 1, 1), new THREE.MeshNormalMaterial() );
+    //  cube.scale.set(4.8, 0.88, 0.3);
+    //  cube.position.set(-74.75879, 18.36, 54.300894);
+    //  cube.rotation.y -= 0.56;
+    //  scene.add(cube);
  });
 
 //click handeler for sign out button (text)
@@ -236,6 +239,8 @@ function openUpdateHeader(){
 function openUpdateBody(){
     $("#updateMenu .body").animate({right: "+=290px"}, 700);
     update.menuBody ="open";
+    //create highlight for signs
+    scene.add(cube);
 }
 
 //close (slide) update header
@@ -243,6 +248,10 @@ function closeUpdateHeader(){
     $("#updateMenu .header .headerIcon").attr("src", "UI/img/update_icon_grey.png");
     $("#updateMenu .header").animate({right: "-=250px",}, 700 );
     update.menuHeader = "close";
+
+    //remove signs' highlight
+    scene.remove(cube);
+    render();
 }
 
 //close (slide) update body 
@@ -417,11 +426,14 @@ function noteIconClickHandler () {
         $("#noteMenu .header .headerIcon").attr("src", "UI/img/note_blue.png");
         note.menu = "open";
         showNoteCubes();
+        $("#noteMenu .note").show();
+        $("#noteMenu .note").focus();
     }
     else {
         $("#noteMenu .header .headerIcon").attr("src", "UI/img/note_grey.png");
         note.menu = "close";
         hideNoteCubes();
+        $("#noteMenu .note").hide();
     }
 
 }
@@ -437,3 +449,8 @@ function hideNoteCubes() {
     scene.remove(noteCube);
     render();
 }
+
+$("#noteMenu .note button").click(function () {
+    $("#noteMenu .note").hide();
+    noteIconClickHandler();
+})
