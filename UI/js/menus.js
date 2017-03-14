@@ -120,7 +120,7 @@ function signInButtonClickHandler(){
     pass =$("#signInMenu .body .passwordInput").val();
     // get user's data and checking user name an password validity
     $.getJSON("api/v1.0/user?q="+'{"filters":[{"name":"user_name","op":"eq","val":"'+userName+'"}]}', function(data){
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
         if(data.num_results) {
             console.log(data);
             var data_values = data.objects[0];
@@ -188,13 +188,7 @@ function loadShopsComboBox() {
     yawObject.position.set(-80, 14, 74);
     yawObject.rotation.y -= 0.51;
 
-    //highlight first the sign (it's not completed, we should have highlights' dimensions to database.)
-    //  cube = new THREE.Mesh( new THREE.CubeGeometry(1, 1, 1), new THREE.MeshNormalMaterial() );
-    //  cube.scale.set(4.8, 0.88, 0.3);
-    //  cube.position.set(-74.75879, 18.36, 54.300894);
-    //  cube.rotation.y -= 0.56;
-    //  scene.add(cube);
- });
+});
 
 //click handeler for sign out button (text)
 $(document).on("click", "#signInMenu .header .text", signOutClickHandler)
@@ -279,22 +273,27 @@ function updateClickHandler() {
 $(document).on("click", "#updateMenu .body .selectSign .forwardArrow", selectNextSign);
 $(document).on("click", "#updateMenu .body .selectSign .backwardArrow", selectPreviousSign);
 function selectNextSign () {
-    console.log(JSON.stringify(user.signs.length));
+    //console.log(JSON.stringify(user.signs.length));
 
     if (update.currentSignIndex < (user.signs.length - 1)){
         ++update.currentSignIndex;
         sign_id = user.signs[update.currentSignIndex].id;
     }
-    console.log(JSON.stringify(sign_id));
+    //console.log(JSON.stringify(sign_id));
     // create the highlights (it's not completed, we should have highlights' dimensions to database.)
     if (update.currentSignIndex == 0){
         cube.scale.set(4.8, 0.88, 0.3);
         cube.position.set(-74.75879, 18.36, 54.300894);
+        //cube.rotation.y -= 0.56;
+        //scene.add(cube);
     }
     if (update.currentSignIndex == 1){
         cube.scale.set(3.5, 0.88, 0.3);
         cube.position.set(-71.1156, 18.36, 56.5849);
     }
+
+
+
 }
 
 function selectPreviousSign () {
@@ -302,7 +301,7 @@ function selectPreviousSign () {
         --update.currentSignIndex;
         sign_id = user.signs[update.currentSignIndex].id;
     }
-    console.log(JSON.stringify(sign_id));
+    //console.log(JSON.stringify(sign_id));
     // create the highlights (it's not completed, we should have highlights' dimensions to database.)
     if (update.currentSignIndex == 0){
         cube.scale.set(4.8, 0.88, 0.3);
@@ -336,16 +335,28 @@ $("#updateMenu .body .selectNewSign .add").mouseout(function(){
     if (update.status!="signSelected") {$("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");}
 });
 
+change_banner = function(sign_id, data) {
+    //Determine the banner in question.
+    filepath = '/img/vompatti.jpg' //POISTA
+    sign_id = parseInt(sign_id);
+    var banner = scene.getObjectByName(sign_id);
+    console.log(typeof data);
+
+    //Image URL.
+    image_url = data.split(":").pop();
+    image_url = image_url.replace("}", '');
+    image_url = image_url.replace(/"/g, '');
+
+    //Change the image and update the texture to the scene.
+    banner.material.map = THREE.ImageUtils.loadTexture(image_url);
+    banner.material.map.needsUpdate = true;
+}
+
 //update button click handler
 $("#data").submit(function(){
 
     var formData = new FormData($(this)[0]);
-<<<<<<< HEAD
-    var sign_id = "10"; //TODO get sign id
-=======
-    //var sign_id = "1"; //TODO get sign id
->>>>>>> 9a5567eca0022f0f0bb157e3cb635b67ef8444c1
-    formData.append("sign_id", sign_id);
+        formData.append("sign_id", sign_id);
 
     $.ajax({
         url: '/api/upload',
@@ -353,7 +364,8 @@ $("#data").submit(function(){
         data: formData,
         async: false,
         success: function (data) {
-            alert(data)
+            //console.log(data)
+            change_banner(sign_id, data); //Update the banner with new texture.
         },
         cache: false,
         contentType: false,
