@@ -71,83 +71,86 @@ THREE.FreeLookControls = function(camera, domElement) {
 
 	var onKeyDown = function(event) {
 
-		switch (event.keyCode) {
+		if((window.signIn.menuHeader=="close") && (window.note.menu=="close")) {
+            switch (event.keyCode) {
 
-			case 38: // up
-			case 87: // w
-				moveForward = true;
-				break;
+                case 38: // up
+                case 87: // w
+                    moveForward = true;
+                    break;
 
-			case 37: // left
-			case 65: // a
-				moveLeft = true;
-				break;
+                case 37: // left
+                case 65: // a
+                    moveLeft = true;
+                    break;
 
-			case 40: // down
-			case 83: // s
-				moveBackward = true;
-				break;
+                case 40: // down
+                case 83: // s
+                    moveBackward = true;
+                    break;
 
-			case 39: // right
-			case 68: // d
-				moveRight = true;
-				break;
+                case 39: // right
+                case 68: // d
+                    moveRight = true;
+                    break;
 
-			/*case 32: // space
-				// if ( canJump === true ) velocity.y += 10;
-				// canJump = false;
-				moveUp = true;
-				break;
+				/*case 32: // space
+				 // if ( canJump === true ) velocity.y += 10;
+				 // canJump = false;
+				 moveUp = true;
+				 break;
 
-			case 16: // shift
-				moveDown = true;
-				break;*/
+				 case 16: // shift
+				 moveDown = true;
+				 break;*/
 
-		}
+            }
+        }
 
 	};
 
 	var onKeyUp = function(event) {
+		if((window.signIn.menuHeader=="close") && (window.note.menu=="close")) {
+            switch (event.keyCode) {
 
-		switch (event.keyCode) {
+                case 38: // up
+                case 87: // w
+                    moveForward = false;
+                    break;
 
-			case 38: // up
-			case 87: // w
-				moveForward = false;
-				break;
+                case 37: // left
+                case 65: // a
+                    moveLeft = false;
+                    break;
 
-			case 37: // left
-			case 65: // a
-				moveLeft = false;
-				break;
+                case 40: // down
+                case 83: // a
+                    moveBackward = false;
+                    break;
 
-			case 40: // down
-			case 83: // a
-				moveBackward = false;
-				break;
+                case 39: // right
+                case 68: // d
+                    moveRight = false;
+                    break;
 
-			case 39: // right
-			case 68: // d
-				moveRight = false;
-				break;
+                case 32: // space
+                    // if ( canJump === true ) velocity.y += 10;
+                    // canJump = false;
+                    velocity.y = 0;
+                    moveUp = false;
+                    break;
 
-			case 32: // space
-				// if ( canJump === true ) velocity.y += 10;
-				// canJump = false;
-				velocity.y = 0;
-				moveUp = false;
-				break;
+                case 16: // shift
+                    velocity.y = 0;
+                    moveDown = false;
 
-			case 16: // shift
-				velocity.y = 0;
-				moveDown = false;
-				
-				console.log(yawObject.position);
-				console.log(yawObject.rotation.y);
-				break;
+                    console.log(yawObject.position);
+                    console.log(yawObject.rotation.y);
+                    break;
 
-		}
+            }
 
+        }
 	};
 
 

@@ -1,4 +1,4 @@
-var EditControls = {}
+var EditControls = {};
 
 EditControls.init = function(count)
 {
@@ -6,7 +6,7 @@ EditControls.init = function(count)
 	this._currIndex = 0;
 	this._debugPortal = null;
 	this.enabled = false;
-}
+};
 
 EditControls.enable = function(index)
 {
@@ -30,14 +30,14 @@ EditControls.enable = function(index)
 	pitchObject.rotation.x = this._debugPortal.targetImage.d.crx;
 	
 	window.addEventListener('keydown', this._onKeyDown, false);
-}
+};
 
 EditControls.disable = function()
 {
 	this.enabled = false;
 	
 	window.removeEventListener('keydown', this._onKeyDown, false);
-}
+};
 
 EditControls._onKeyDown = function(e)
 {
@@ -54,6 +54,8 @@ EditControls._onKeyDown = function(e)
 			break;
 		
 		case 70: // F
+			console.log("test2");
+			//console.log(help.menu);
 			EditControls._debugPortal.targetImage.position.x -= .2 * Math.cos(yawObject.rotation.y);
 			EditControls._debugPortal.targetImage.position.z += .2 * Math.sin(yawObject.rotation.y);
 			break;
@@ -150,4 +152,4 @@ EditControls._onKeyDown = function(e)
 						.replace("{desc}", '"' + img.d.desc + '"')
 			);
 	}
-}
+};

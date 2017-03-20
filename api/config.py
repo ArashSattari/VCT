@@ -4,7 +4,7 @@ import flask_sqlalchemy
 # Create the Flask application and the Flask-SQLAlchemy object.
 from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
 
-UPLOAD_FOLDER = '~/acp1/cleaningCode/VCT/img'
+UPLOAD_FOLDER = 'acp1/cleaningCode/VCT/img'
 app = flask.Flask(__name__)
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOADED_IMAGES_DEST'] = UPLOAD_FOLDER

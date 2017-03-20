@@ -67,8 +67,8 @@ CST._createBanners = function(banner_data, sign_id_list) {
         banner.rotation.z = banner_data[i]['iry']; //|| 0;
         this._scene.add(banner);
         console.log(scene.getObjectByName(sign_id_list[i]));
-
-    };
+    }
+    hideLoadingPage();
 
 };
 
@@ -85,3 +85,9 @@ CST.init = function(scen, cam) {
         });
     });
 };
+
+
+function hideLoadingPage() {
+    clearInterval(window.loadingPageInterval);
+    $("#loadingPage").hide();
+}

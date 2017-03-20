@@ -16,7 +16,7 @@
     <script src="js/cst/Loader.js"></script>
 	<script src="js/cst/EditControls.js"></script>
 	<script src="js/cst/Util.js"></script>
-	<script src="js/cst/Cst.js?3"></script>
+	<script src="js/cst/Cst.js"></script>
 <!--
 ?filever=<?=filesize('path/to/file/mylibrary.js')?>
 -->
@@ -46,7 +46,7 @@
 
 
     <section id="UI">
-        <!-- A help (Getting started) window will be shown when Virtual Oulu opens -->
+        <section id="loadingPage">Loading &nbsp&nbsp&nbsp</section>
         <section id="helpPage">
             <div class="help">
                 <div class="header">
@@ -108,7 +108,7 @@
                 <!-- Selecting Sign -->
                 <div class="selectSign">
                     <img class="backwardArrow" src="UI/img/BackwardArrow_grey.png" alt="store" />
-                    <img class="signIcon" src="UI/img/sign.png" alt="store" />
+                    <img class="signIcon" />
                     <img class="forwardArrow" src="UI/img/ForwardArrow_grey.png" alt="store" />
                 </div>
                 <p id="selectSignFieldTitle">Select a sign</p>

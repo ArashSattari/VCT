@@ -15,9 +15,12 @@ var clock = new THREE.Clock();
 var oulu, colliderBuildings, colliderGround;
 var debugMode = false;
 
+var loadingPageInterval, loadingCounter=1;
+
 // FUNCTIONS 		
 function init()
 {
+	showLoadingPage();
 	scene = new THREE.Scene();
 	
 	var SCREEN_WIDTH = window.innerWidth,
@@ -267,4 +270,31 @@ function render()
 	renderer.setViewport( 0, 0, w, h );
     renderer.render(scene, flyCamera);
    //renderer.autoClear = true;
+}
+
+function showLoadingPage() {
+	loadingPageInterval = setInterval(function () {
+		switch (loadingCounter){
+			case 1:
+				$("#loadingPage").html("Loading "+"&nbsp&nbsp&nbsp");
+				break;
+			case 2:
+				$("#loadingPage").html("Loading "+"."+"&nbsp&nbsp");
+				break;
+			case 3:
+				$("#loadingPage").html("Loading "+".."+"&nbsp");
+				break;
+			case 4:
+				$("#loadingPage").html("Loading "+"...");
+				break;
+			case 5:
+				$("#loadingPage").html("Loading "+".."+"&nbsp");
+				break;
+			case 6:
+				$("#loadingPage").html("Loading "+"."+"&nbsp&nbsp");
+				loadingCounter = 0;
+				break;
+		}
+		++loadingCounter;
+    },500)
 }

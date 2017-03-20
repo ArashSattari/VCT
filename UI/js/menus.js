@@ -30,6 +30,9 @@ var validPass = "";
 var userShopsList = [];
 var selectedShop;
 var userPassStatus = "";
+var currentSignURL;
+var aSignIsUpdated = false;
+var banner;
 var cube = new THREE.Mesh( new THREE.CubeGeometry(1, 1, 1), new THREE.MeshNormalMaterial() ); // for signs' highlight
 cube.rotation.y -= 0.56;
 
@@ -184,9 +187,12 @@ function loadShopsComboBox() {
 
     // set camera position and rotation
     update.currentSignIndex = 0;
-    sign_id = user.signs[update.currentSignIndex].id;
     yawObject.position.set(-80, 14, 74);
     yawObject.rotation.y -= 0.51;
+
+    sign_id = user.signs[update.currentSignIndex].id;
+    currentSignURL = user.signs[update.currentSignIndex].img_url;
+    $("#updateMenu .body .selectSign .signIcon").attr("src", currentSignURL);
 
 });
 
@@ -241,7 +247,7 @@ function openUpdateBody(){
 //close (slide) update header
 function closeUpdateHeader(){
     $("#updateMenu .header .headerIcon").attr("src", "UI/img/update_icon_grey.png");
-    $("#updateMenu .header").animate({right: "-=250px",}, 700 );
+    $("#updateMenu .header").animate({right: "-=250px"}, 700 );
     update.menuHeader = "close";
 
     //remove signs' highlight
@@ -278,21 +284,20 @@ function selectNextSign () {
     if (update.currentSignIndex < (user.signs.length - 1)){
         ++update.currentSignIndex;
         sign_id = user.signs[update.currentSignIndex].id;
+        currentSignURL = user.signs[update.currentSignIndex].img_url;
+        $("#updateMenu .body .selectSign .signIcon").attr("src", currentSignURL);
     }
-    //console.log(JSON.stringify(sign_id));
+
     // create the highlights (it's not completed, we should have highlights' dimensions to database.)
-    if (update.currentSignIndex == 0){
-        cube.scale.set(4.8, 0.88, 0.3);
-        cube.position.set(-74.75879, 18.36, 54.300894);
-        //cube.rotation.y -= 0.56;
-        //scene.add(cube);
-    }
-    if (update.currentSignIndex == 1){
-        cube.scale.set(3.5, 0.88, 0.3);
-        cube.position.set(-71.1156, 18.36, 56.5849);
-    }
-
-
+    // if (update.currentSignIndex == 0){
+    //     cube.scale.set(4.8, 0.88, 0.3);
+    //     cube.position.set(-74.75879, 18.36, 54.300894);
+    //
+    // }
+    // if (update.currentSignIndex == 1){
+    //     cube.scale.set(3.5, 0.88, 0.3);
+    //     cube.position.set(-71.1156, 18.36, 56.5849);
+    // }
 
 }
 
@@ -300,17 +305,19 @@ function selectPreviousSign () {
     if (update.currentSignIndex > 0){
         --update.currentSignIndex;
         sign_id = user.signs[update.currentSignIndex].id;
+        currentSignURL = user.signs[update.currentSignIndex].img_url;
+        $("#updateMenu .body .selectSign .signIcon").attr("src", currentSignURL);
     }
-    //console.log(JSON.stringify(sign_id));
+
     // create the highlights (it's not completed, we should have highlights' dimensions to database.)
-    if (update.currentSignIndex == 0){
-        cube.scale.set(4.8, 0.88, 0.3);
-        cube.position.set(-74.75879, 18.36, 54.300894);
-    }
-    if (update.currentSignIndex == 1){
-        cube.scale.set(3.5, 0.88, 0.3);
-        cube.position.set(-71.1156, 18.36, 56.5849);
-    }
+    // if (update.currentSignIndex == 0){
+    //     cube.scale.set(4.8, 0.88, 0.3);
+    //     cube.position.set(-74.75879, 18.36, 54.300894);
+    // }
+    // if (update.currentSignIndex == 1){
+    //     cube.scale.set(3.5, 0.88, 0.3);
+    //     cube.position.set(-71.1156, 18.36, 56.5849);
+    // }
 }
 
 //highlight sign selector buttons (forward/backward) when mouse moves on it
@@ -337,9 +344,9 @@ $("#updateMenu .body .selectNewSign .add").mouseout(function(){
 
 change_banner = function(sign_id, data) {
     //Determine the banner in question.
-    filepath = '/img/vompatti.jpg' //POISTA
+    filepath = '/img/vompatti.jpg';//POISTA
     sign_id = parseInt(sign_id);
-    var banner = scene.getObjectByName(sign_id);
+    banner = scene.getObjectByName(sign_id);
     console.log(typeof data);
 
     //Image URL.
@@ -350,9 +357,10 @@ change_banner = function(sign_id, data) {
     //Change the image and update the texture to the scene.
     banner.material.map = THREE.ImageUtils.loadTexture(image_url);
     banner.material.map.needsUpdate = true;
-}
+};
 
 //update button click handler
+console.log(sign_id);
 $("#data").submit(function(){
 
     var formData = new FormData($(this)[0]);
@@ -371,6 +379,24 @@ $("#data").submit(function(){
         contentType: false,
         processData: false
     });
+
+    //close update menu
+    updateClickHandler();
+
+    //update signs' data
+    $.getJSON("api/v1.0/user?q="+'{"filters":[{"name":"user_name","op":"eq","val":"'+userName+'"}]}', function(data){
+        //console.log(JSON.stringify(data));
+            var data_values = data.objects[0];
+            user.signs = data_values.signs;
+            update.currentSignIndex = 0;
+            sign_id = user.signs[update.currentSignIndex].id;
+            currentSignURL = user.signs[update.currentSignIndex].img_url;
+            $("#updateMenu .body .selectSign .signIcon").attr("src", currentSignURL);
+    }).error(function () {alert("error");});
+
+    aSignIsUpdated = true;
+    $("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");
+
 
     return false;
 });
@@ -399,42 +425,6 @@ $("#browse").change(function(){
     update.status="signSelected";
 });
 
-//click handler for update sign button
-//$(document).on("click", "#updateMenu .body button", updateSign);
-//function updateSign () {
-
-    // get uploaded image URI
-    // $.getJSON("api/upload", function(data){
-    //     var data_values = data.objects[0];
-    //     var test = data_values.filepath;
-    //
-    //     alert(test);
-    // //-------------------------------------------------
-    //
-    // });
-
-    // for finding the position of a sign (for test)
-    //cube.position.x += .1 * Math.cos(cube.rotation.y);
-    //cube.position.z -= .1 * Math.sin(cube.rotation.y);
-    //alert("x: " + cube.position.x + "   z: " + cube.position.z);
-
-    //cube.position.x += .1 * Math.cos(cube.rotation.y + 90 * Math.PI/180);
-    //cube.position.z -= .1 * Math.sin(cube.rotation.y + 90 * Math.PI/180);
-    //alert("x: " + cube.position.x + "   z: " + cube.position.z);
-
-    //cube.position.y -= 0.02;
-    //alert("y: " + cube.position.y);
-
-    //cube.rotation.y -= 0.56;
-//}
-
-//highlight update sign button when mouse moves on it
-// $("#updateMenu .body button").mouseover(function(){
-//     $("#updateMenu .body button").css("color", "#226AFF");
-// });
-// $("#updateMenu .body button").mouseout(function(){
-//     $("#updateMenu .body button").css("color", "#AAAAAA");
-// });
 
 //click handler for note icon (header icon)
 $(document).on("click", "#noteMenu .header .headerIcon", noteIconClickHandler);
@@ -452,7 +442,6 @@ function noteIconClickHandler () {
         hideNoteCubes();
         $("#noteMenu .note").hide();
     }
-
 }
 
 function showNoteCubes() {
@@ -469,5 +458,57 @@ function hideNoteCubes() {
 
 $("#noteMenu .note button").click(function () {
     $("#noteMenu .note").hide();
+    $("#noteMenu .note").text("");
     noteIconClickHandler();
-})
+});
+
+// align signs manualy to find correct coordination
+$(document).keypress(function (event) {
+    if ((update.menuHeader == "open") &&(aSignIsUpdated)) {
+        switch (event.which) {
+            case 108: // L
+                //move the banner recently updated to right
+                banner.position.x += .1 * Math.cos(banner.rotation.y);
+                banner.position.z -= .1 * Math.sin(banner.rotation.y);
+                break;
+            case 106: // J
+                //move the banner recently updated to left
+                banner.position.x -= .05 * Math.cos(banner.rotation.y);
+                banner.position.z += .05 * Math.sin(banner.rotation.y);
+                break;
+            case 105: // I
+                //move the banner recently updated to inside
+                banner.position.x += .05 * Math.cos(banner.rotation.y + 90 * Math.PI/180);
+                banner.position.z -= .05 * Math.sin(banner.rotation.y + 90 * Math.PI/180);
+                break;
+            case 107: // K
+                //move the banner recently updated to outside
+                banner.position.x -= .05 * Math.cos(banner.rotation.y + 90 * Math.PI/180);
+                banner.position.z += .05 * Math.sin(banner.rotation.y + 90 * Math.PI/180);
+                break;
+            case 111: // O
+                //move the banner recently updated up
+                banner.position.y += 0.02;
+                break;
+            case 112: // P
+                //move the banner recently updated down
+                banner.position.y -= 0.02;
+                break;
+            case 44: // ","
+                //rotate the banner recently updated to right
+                banner.rotation.y -= 0.005;
+                break;
+            case 46: // "."
+                //rotate the banner recently updated to left
+                banner.rotation.y += 0.005;
+                break;
+            case 13: // Enter
+                alert("Position:  " + "\n" +
+                    "X =  " + banner.position.x + "\n" +
+                    "Y =  " + banner.position.y + "\n" +
+                    "Z =  " + banner.position.z + "\n\n" +
+                    "Rotation.Y:  " + banner.rotation.y);
+                break;
+        }
+    }
+});

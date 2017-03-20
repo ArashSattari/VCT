@@ -4,6 +4,19 @@
     z-index: 200;
 }
 
+#loadingPage {
+    width: 100%;
+    height: 100%;
+    z-index: 250;
+    position: fixed;
+    background: #383838;
+    font-size: 75px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    color: #AAAAAA;
+    text-align: center;
+    padding-top: 200px;
+}
+
 #helpMenu .header {
     height: 40px;
     width: 80px;
@@ -182,20 +195,22 @@
     background-color: #444444;
 }
 #updateMenu .body .selectSign .backwardArrow {
-    height: 37px;
+    height: 38px;
     margin-top: 10px;
-    margin-left: 50px;
+    margin-left: 8px;
 }
 #updateMenu .body .selectSign .forwardArrow {
-    height: 37px;
-    margin-top: 12px;
-    margin-left: 80px;
+    height: 38px;
+    margin-top: 10px;
+    margin-left: 2px;
 }
 #updateMenu .body .selectSign .signIcon {
-    position: absolute;
-    height: 50px;
-    margin-top: -5px;
-    margin-left: 10px;
+    height: 38px;
+    width: 145px;
+    margin-top: 10px;
+    margin-left: 2px;
+    object-fit: contain;
+    background: #11111111;
 }
 #updateMenu .body .selectNewSign {
     position: absolute;
@@ -238,6 +253,7 @@
     left: 20px;
     bottom: 0;
     margin-bottom: 10px;
+    z-index: 300;
 }
 
 #updateButton {
@@ -302,10 +318,10 @@
     margin-left: 250px;
 }
 #noteMenu .note textarea {
-    width: 560px;
+    width: 540px;
     height: 200px;
     border: 0px solid #AAAAAA;
-    border-radius: 7px;
+    border-radius: 5px;
     color: #222222;
     background-color: #EEEEEE;
     font-size: 20px;

@@ -211,7 +211,6 @@ THREE.FlyControls = function ( object, domElement ) {
 		this.moveVector.z = ( -forward + this.moveState.back );
 
 		//console.log( 'move:', [ this.moveVector.x, this.moveVector.y, this.moveVector.z ] );
-
 	};
 
 	this.updateRotationVector = function() {
