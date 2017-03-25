@@ -68,7 +68,8 @@ CST._createBanners = function(banner_data, sign_id_list) {
         this._scene.add(banner);
         console.log(scene.getObjectByName(sign_id_list[i]));
     }
-    hideLoadingPage();
+
+    $("#loadingPage").hide();
 
 };
 
@@ -87,7 +88,3 @@ CST.init = function(scen, cam) {
 };
 
 
-function hideLoadingPage() {
-    clearInterval(window.loadingPageInterval);
-    $("#loadingPage").hide();
-}

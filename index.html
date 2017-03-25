@@ -46,15 +46,16 @@
 
 
     <section id="UI">
-        <section id="loadingPage">Loading &nbsp&nbsp&nbsp</section>
+        <!-- <section id="loadingPage">Loading &nbsp&nbsp&nbsp</section> -->
+        <section id="loadingPage"><img src="UI/img/loading_1.gif" /></section>
         <section id="helpPage">
             <div class="help">
                 <div class="header">
-                    <span class="text">Welcome to Vitual Oulu</span>
+                    <span class="text">Navigating in Virtual Oulu</span>
                 </div>
                 <div class="body">
-                    <img class="image" src="UI/img/arrowKeys.png" alt="Help steps">
-                    <p class="text">Use keyboard arrow keys to navigate.</p>
+                    <p id="description"></p>
+                    <img src="UI/img/Help_1.png" alt="Help steps">
                 </div>
                 <div class="footer">
                     <hr class="divider"/>
@@ -92,6 +93,7 @@
                 <img class=headerIcon src="UI/img/note_grey.png" alt=icon>
             </div>
             <div class="note">
+                <div><input type="text" onkeypress='return event.charCode >=48 && event.charCode<= 57' placeholder="Please write the Building number here" id="plateNumber"></div>
                 <div><textarea rows="5" cols="50"></textarea></div>
                 <div><button>SUBMIT</button></div>
             </div>

@@ -266,6 +266,7 @@ $(document).on("click", "#updateMenu .header .headerIcon", updateClickHandler);
 function updateClickHandler() {
     if (help.menu == "open") closeHelpPage();
     if (update.menuHeader == "close"){
+        $("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");
         openUpdateHeader();
         openUpdateBody();
     }
@@ -335,10 +336,10 @@ $("#updateMenu .body .selectSign .backwardArrow").mouseout(function(){
 });
 
 //highlight add new sign  when mouse moves on it
-$("#updateMenu .body .selectNewSign .add").mouseover(function(){
+$("#updateMenu .body .selectNewSign label .add").mouseover(function(){
    if (update.status!="signSelected") {$("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_blue.png");}
 });
-$("#updateMenu .body .selectNewSign .add").mouseout(function(){
+$("#updateMenu .body .selectNewSign label .add").mouseout(function(){
     if (update.status!="signSelected") {$("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");}
 });
 
@@ -359,8 +360,8 @@ change_banner = function(sign_id, data) {
     banner.material.map.needsUpdate = true;
 };
 
+
 //update button click handler
-console.log(sign_id);
 $("#data").submit(function(){
 
     var formData = new FormData($(this)[0]);
@@ -395,7 +396,6 @@ $("#data").submit(function(){
     }).error(function () {alert("error");});
 
     aSignIsUpdated = true;
-    $("#updateMenu .body .selectNewSign .add").attr("src", "UI/img/add_grey.png");
 
 
     return false;
@@ -457,12 +457,13 @@ function hideNoteCubes() {
 }
 
 $("#noteMenu .note button").click(function () {
+    $("#noteMenu .note textarea").val("");
+    $("#noteMenu .note #plateNumber").val("");
     $("#noteMenu .note").hide();
-    $("#noteMenu .note").text("");
     noteIconClickHandler();
 });
 
-// align signs manualy to find correct coordination
+// align signs manually to find correct coordination
 $(document).keypress(function (event) {
     if ((update.menuHeader == "open") &&(aSignIsUpdated)) {
         switch (event.which) {

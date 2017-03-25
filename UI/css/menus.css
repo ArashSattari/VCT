@@ -9,12 +9,20 @@
     height: 100%;
     z-index: 250;
     position: fixed;
-    background: #383838;
+    background: #000000;
     font-size: 75px;
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
     color: #AAAAAA;
     text-align: center;
-    padding-top: 200px;
+    padding-top: 22%;
+}
+
+#loadingPage img{
+    position: fixed;
+    left: 50%;
+    margin-left: -200px;
+    bottom: 50%;
+    margin-bottom: -150px;
 }
 
 #helpMenu .header {
@@ -294,7 +302,7 @@
 #noteMenu .note {
     border: 4px solid #888888;
     border-radius: 30px;
-    height: 300px;
+    height: 350px;
     width: 600px;
     position: fixed;
     margin-left: auto;
@@ -303,6 +311,16 @@
     right: 0;
     bottom:40px;
     background-color: #FFFFFF;
+}
+#noteMenu #plateNumber{
+    width: 260px;
+    height: 30px;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    margin-top: 15px;
+    margin-left: 170px;
+    border-radius: 5px;
+    text-align: center;
 }
 #noteMenu .note button {
     border: 2px solid #AAAAAA;
@@ -327,9 +345,15 @@
     font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
     outline: 0;
-    margin-top: 30px;
+    margin-top: 15px;
     margin-left: 20px;
     cursor: auto;
     padding: 10px ;
+
+    background-attachment: local;
+    background-image:
+        linear-gradient(to right, white 10px, transparent 10px),
+        linear-gradient(to left, white 10px, transparent 10px),
+        repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
 }
 

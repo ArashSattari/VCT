@@ -4,7 +4,7 @@ var interval;
 
 function createNoteCube(px, py, pz, scales, ry) {
     var geometry = new THREE.CubeGeometry(scales, scales, scales);
-    var material = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture("UI/img/note_1.png")});
+    var material = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture("UI/img/plate_number_3.png")});
     noteCube = new THREE.Mesh(geometry, material);
     noteCube.position.set(px, py, pz);
     noteCube.rotation.y -= ry;
