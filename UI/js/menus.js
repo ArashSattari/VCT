@@ -289,6 +289,8 @@ function selectNextSign () {
         $("#updateMenu .body .selectSign .signIcon").attr("src", currentSignURL);
     }
 
+    console.log(JSON.stringify(user.signs));
+
     // create the highlights (it's not completed, we should have highlights' dimensions to database.)
     // if (update.currentSignIndex == 0){
     //     cube.scale.set(4.8, 0.88, 0.3);
@@ -446,7 +448,8 @@ function noteIconClickHandler () {
 
 function showNoteCubes() {
     //for test
-    createNoteCube(-75.82862, 16.1, 53.748101, 1.5, 0.56);
+    //createNoteCube(-75.82862, 16.1, 53.748101, 1.5, 0.56);
+    createNoteCube(-37.16947, 15, 76.91747, 0.75, 0.56);
     spinNoteCubeStart(50);
 }
 
@@ -503,12 +506,26 @@ $(document).keypress(function (event) {
                 //rotate the banner recently updated to left
                 banner.rotation.y += 0.005;
                 break;
+            case 109: // M
+                banner.scale.x += 0.01;
+                break;
+            case 110: // N
+                banner.scale.x -= 0.01;
+                break;
+            case 122: // Z
+                banner.scale.y += 0.01;
+                break;
+            case 120: // X
+                banner.scale.y -= 0.01;
+                break;
             case 13: // Enter
                 alert("Position:  " + "\n" +
                     "X =  " + banner.position.x + "\n" +
                     "Y =  " + banner.position.y + "\n" +
                     "Z =  " + banner.position.z + "\n\n" +
-                    "Rotation.Y:  " + banner.rotation.y);
+                    "Rotation.Y:  " + banner.rotation.y + "\n\n" +
+                    "Width =  " + banner.scale.x + "\n"+
+                    "Height =  " + banner.scale.y);
                 break;
         }
     }
